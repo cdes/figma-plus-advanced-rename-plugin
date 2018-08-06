@@ -6,10 +6,15 @@
   "repository": "http://github.com/cdes/figgins",
   "author": "Ahmed Al Haddad <ahmed.hdd@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "start": "parcel ./src/index.html"
+  },
   "dependencies": {
     "jquery": "^3.3.1"
   },
   "devDependencies": {
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-preset-env": "^1.7.0",
     "parcel-bundler": "^1.9.7"
   }
 }
