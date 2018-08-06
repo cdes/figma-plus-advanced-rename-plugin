@@ -13,8 +13,6 @@ class Factory {
     if (keys.length === 1 && keys[0] === "default") {
       console.log("%c[Figgins] No plugins found.", "color: green");
     } else {
-      console.log(keys);
-
       keys.map((key, index) => {
         this.setupPlugin(plugins[key]);
 
