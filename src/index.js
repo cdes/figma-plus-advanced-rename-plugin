@@ -1,6 +1,6 @@
 import Factory from './factory';
-import * as figgins from "./figgins";
+import * as figments from "./figments";
 
-const factory = new Factory(figgins);
+const factory = new Factory(figments);
 
 factory.init();

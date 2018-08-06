@@ -1,9 +1,9 @@
 {
-  "name": "figgins",
+  "name": "figments",
   "version": "1.0.0",
   "description": "An unofficial plugins system for Figam.com",
   "main": "index.js",
-  "repository": "http://github.com/cdes/figgins",
+  "repository": "http://github.com/cdes/figments",
   "author": "Ahmed Al Haddad <ahmed.hdd@gmail.com>",
   "license": "MIT",
   "scripts": {

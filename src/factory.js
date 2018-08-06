@@ -1,20 +1,20 @@
 class Factory {
   
-  constructor(plugins) {
-    this.plugins = plugins;
+  constructor(figments) {
+    this.figments = figments;
   }
 
   init = () => {
-    console.log("%c[Figgins] Initilizing...", "color: green");
+    console.log("[🔌] Initilizing...");
 
-    const plugins = this.plugins;
-    const keys = Object.keys(plugins);
+    const figments = this.figments;
+    const keys = Object.keys(figments);
 
     if (keys.length === 1 && keys[0] === "default") {
-      console.log("%c[Figgins] No plugins found.", "color: green");
+      console.log("[🔌] No figments found.");
     } else {
       keys.map((key, index) => {
-        this.setupPlugin(plugins[key]);
+        this.setupPlugin(figments[key]);
 
         if (index === keys.length - 1) {
           this.didInitilize();
@@ -24,12 +24,12 @@ class Factory {
   }
   
   didInitilize = () => {
-    console.log("%c[Figgins] All set!", "color: green");
+    console.log("[🔌] All set!");
   }
 
   setupPlugin = (plugin) => {
     plugin.setup();
-    console.log(`%c[Figgins] Added ${plugin.name} plugin`, "color: green");
+    console.log(`[🔌] Added ${plugin.name} plugin`);
   }
 }
 
