@@ -1,3 +1,5 @@
+import { doubleClickEvent } from "./utilities";
+
 class Layer {
   constructor(domNode) {
     this.domNode = domNode;
