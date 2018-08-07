@@ -8,7 +8,7 @@ const example = {
   },
   main() {
     const selectedLayers = this.factory.getSelectedLayers();
-    console.log("Selected layers", selectedLayers.length);
+    console.log("🔌 Selected layers", selectedLayers.length);
   }
 }
 

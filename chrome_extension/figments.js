@@ -320,13 +320,12 @@ var Factory = function () {
     value: function run() {
       var _this = this;
 
-      console.log("[🔌] Injecting Figments...");
+      console.log("🔌 Injecting Figments...");
 
       var pollingRun = setInterval(function () {
         var buttonGroup = document.querySelector(".toolbar_view--buttonGroup--2wM3n");
         if (buttonGroup) {
           _this.init();
-          console.log("[🔌] ✅ Injected.");
           clearInterval(pollingRun);
         }
       }, 1000);
@@ -334,6 +333,7 @@ var Factory = function () {
   }, {
     key: "init",
     value: function init() {
+      console.log("🔌 Initilizing...");
       var buttonGroup = document.querySelector(".toolbar_view--buttonGroup--2wM3n");
 
       var markup = (0, _jsxRender2.default)(
@@ -387,7 +387,7 @@ var Factory = function () {
     key: "toggleDropdown",
     value: function toggleDropdown() {
       if (this.figmentsDropdown.style.display === "none") {
-        console.log("[🔌] Show menu");
+        console.log("🔌 Show menu");
 
         var triggerRect = this.figmentsTrigger.getBoundingClientRect();
         this.figmentsTrigger.classList.add("activeButton-3");
@@ -398,7 +398,7 @@ var Factory = function () {
         var menuRect = this.figmentsMenu.getBoundingClientRect();
         this.figmentsMenu.style.left = triggerRect.left + triggerRect.width / 2 - menuRect.width / 2 + "px";
       } else {
-        console.log("[🔌] Hide menu");
+        console.log("🔌 Hide menu");
 
         this.figmentsDropdown.style.display = "none";
         this.figmentsTrigger.classList.remove("activeButton-3");
@@ -409,22 +409,23 @@ var Factory = function () {
     value: function setupPlugins() {
       var _this2 = this;
 
+      console.log("🔌 Setting up plugins...");
       var figments = this.figments;
       var keys = Object.keys(figments);
 
       if (keys.length === 1 && keys[0] === "default") {
-        console.log("[🔌] No figments found.");
+        console.log("🔌 No figments found.");
       } else {
         keys.map(function (key, index) {
           var plugin = figments[key];
 
           plugin.setup(_this2);
-          console.log("[\uD83D\uDD0C] Plugin added: " + plugin.name);
+          console.log("\uD83D\uDD0C Plugin added: " + plugin.name);
 
           _this2.addOption(plugin.name, plugin.main.bind(plugin));
 
           if (index === keys.length - 1) {
-            console.log("[🔌] All set!");
+            console.log("🔌 All set!");
           }
         });
       }
@@ -460,7 +461,7 @@ var example = {
   },
   main: function main() {
     var selectedLayers = this.factory.getSelectedLayers();
-    console.log("Selected layers", selectedLayers.length);
+    console.log("🔌 Selected layers", selectedLayers.length);
   }
 };
 

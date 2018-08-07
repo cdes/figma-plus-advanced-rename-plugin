@@ -8,7 +8,7 @@ class Factory {
   }
 
   run() {
-    console.log("[🔌] Injecting Figments...");
+    console.log("🔌 Injecting Figments...");
 
     const pollingRun = setInterval(() => {
       const buttonGroup = document.querySelector(
@@ -16,13 +16,13 @@ class Factory {
       );
       if (buttonGroup) {
         this.init();
-        console.log("[🔌] ✅ Injected.");
         clearInterval(pollingRun);
       }
     }, 1000);
   }
 
   init() {
+    console.log("🔌 Initilizing...");
     const buttonGroup = document.querySelector(".toolbar_view--buttonGroup--2wM3n");
 
     const markup = <span className="toolbar_view--actionButtonContainer--J2txY">
@@ -66,7 +66,7 @@ class Factory {
 
   toggleDropdown () {    
     if(this.figmentsDropdown.style.display === "none") {
-      console.log("[🔌] Show menu");    
+      console.log("🔌 Show menu");    
 
       const triggerRect = this.figmentsTrigger.getBoundingClientRect();
       this.figmentsTrigger.classList.add("activeButton-3");
@@ -78,7 +78,7 @@ class Factory {
       this.figmentsMenu.style.left = triggerRect.left + (triggerRect.width / 2) - (menuRect.width / 2) + "px";
     }
     else {
-      console.log("[🔌] Hide menu");    
+      console.log("🔌 Hide menu");    
 
       this.figmentsDropdown.style.display = "none";
       this.figmentsTrigger.classList.remove("activeButton-3");
@@ -87,22 +87,23 @@ class Factory {
   }
 
   setupPlugins() {
+    console.log("🔌 Setting up plugins...");
     const figments = this.figments;
     const keys = Object.keys(figments);
 
     if (keys.length === 1 && keys[0] === "default") {
-      console.log("[🔌] No figments found.");
+      console.log("🔌 No figments found.");
     } else {
       keys.map((key, index) => {
         const plugin = figments[key];
 
         plugin.setup(this);
-        console.log(`[🔌] Plugin added: ${plugin.name}`);
+        console.log(`🔌 Plugin added: ${plugin.name}`);
 
         this.addOption(plugin.name, plugin.main.bind(plugin));
 
         if (index === keys.length - 1) {
-          console.log("[🔌] All set!");
+          console.log("🔌 All set!");
         }
       });
     }
