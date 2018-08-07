@@ -7,7 +7,7 @@
   "author": "Ahmed Al Haddad <ahmed.hdd@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "parcel ./src/index.html"
+    "start": "parcel watch ./src/index.js --out-dir ./chrome_extension --out-file figments.js"
   },
   "dependencies": {
     "jquery": "^3.3.1",
