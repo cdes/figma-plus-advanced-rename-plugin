@@ -348,7 +348,8 @@ var Factory = function () {
           "div",
           { id: "figments-dropdown", "class": "pointing_dropdown--root--28JAG", style: { display: "none" } },
           (0, _jsxRender2.default)("div", { "class": "pointing_dropdown--arrow--Lu8iU" }),
-          (0, _jsxRender2.default)("div", { id: "figments-menu", "class": "dropdown--dropdown--35dH4 pointing_dropdown--content--2os_K" })
+          (0, _jsxRender2.default)("div", { id: "figments-menu", "class": "dropdown--dropdown--35dH4 pointing_dropdown--content--2os_K" }),
+          (0, _jsxRender2.default)("div", { id: "figments-overlay" })
         )
       );
 
@@ -367,8 +368,10 @@ var Factory = function () {
       this.figmentsDropdown = document.getElementById("figments-dropdown");
       this.figmentsMenu = document.getElementById("figments-menu");
       this.figmentsTrigger = document.getElementById("figments-trigger");
+      this.figmentsOverlay = document.getElementById("figments-overlay");
 
       this.figmentsTrigger.addEventListener("click", this.toggleDropdown.bind(this));
+      this.figmentsOverlay.addEventListener("click", this.toggleDropdown.bind(this));
 
       this.setupPlugins();
     }
@@ -391,6 +394,9 @@ var Factory = function () {
 
         this.figmentsDropdown.style.display = "block";
         this.figmentsDropdown.style.left = triggerRect.left + triggerRect.width / 2 - 6 + "px";
+
+        var menuRect = this.figmentsMenu.getBoundingClientRect();
+        this.figmentsMenu.style.left = triggerRect.left + triggerRect.width / 2 - menuRect.width / 2 + "px";
       } else {
         console.log("[🔌] Hide menu");
 

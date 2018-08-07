@@ -34,6 +34,7 @@ class Factory {
           <div id="figments-menu" class="dropdown--dropdown--35dH4 pointing_dropdown--content--2os_K">
             
           </div>
+          <div id="figments-overlay" />
         </div>
       </span>;
 
@@ -48,8 +49,10 @@ class Factory {
     this.figmentsDropdown = document.getElementById("figments-dropdown");
     this.figmentsMenu = document.getElementById("figments-menu");
     this.figmentsTrigger = document.getElementById("figments-trigger");
+    this.figmentsOverlay = document.getElementById("figments-overlay");
 
     this.figmentsTrigger.addEventListener("click", this.toggleDropdown.bind(this));
+    this.figmentsOverlay.addEventListener("click", this.toggleDropdown.bind(this));
 
     this.setupPlugins();
   }
@@ -67,9 +70,12 @@ class Factory {
 
       const triggerRect = this.figmentsTrigger.getBoundingClientRect();
       this.figmentsTrigger.classList.add("activeButton-3");
-
+      
       this.figmentsDropdown.style.display = "block";
       this.figmentsDropdown.style.left = (triggerRect.left + (triggerRect.width / 2) - 6) + "px";
+      
+      const menuRect = this.figmentsMenu.getBoundingClientRect();
+      this.figmentsMenu.style.left = triggerRect.left + (triggerRect.width / 2) - (menuRect.width / 2) + "px";
     }
     else {
       console.log("[🔌] Hide menu");    
