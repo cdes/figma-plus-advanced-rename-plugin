@@ -1,10 +1,19 @@
 import dom from "jsx-render";
 import Layer from './core/layer';
 
+import vex from "vex-js";
+import toast from "js-simple-toast";
+
 class Factory {
 
   constructor(figments) {
     this.figments = figments;
+    this.vex = vex;
+
+    this.vex.registerPlugin(require("vex-dialog"));
+    this.vex.defaultOptions.className = "vex-theme-plain";
+
+    this.toast = toast;
   }
 
   run() {

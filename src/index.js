@@ -1,7 +1,11 @@
+import 'vex-js/dist/css/vex.css';
+import 'vex-js/dist/css/vex-theme-plain.css';
+import './assets/figments.css';
+
 import Factory from './factory';
 import * as figments from "./figments";
-import './assets/figments.css';
 
 const factory = new Factory(figments);
 
 factory.run();
+

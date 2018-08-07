@@ -18,3 +18,26 @@
   right: 0;
   bottom: 0;
 }
+
+.vex-overlay,
+.vex-overlay.vex-closing,
+.vex-content,
+.vex.vex-closing .vex-content {
+    -webkit-animation-duration: .1s !important;
+    animation-duration: .1s !important;
+}
+
+.toast-content-container {
+  top: 64px !important;
+  opacity: .8 !important;
+}
+
+.toast-container {
+  background-color: transparent !important;
+}
+
+.toast-content {
+  font-size: 12px !important;
+  padding: 8px 16px !important;
+  border-radius: 500px !important;
+}

@@ -914,6 +914,10 @@ class-utils@^0.3.5:
     isobject "^3.0.0"
     static-extend "^0.1.1"
 
+classlist-polyfill@1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/classlist-polyfill/-/classlist-polyfill-1.2.0.tgz#935bc2dfd9458a876b279617514638bcaa964a2e"
+
 cli-cursor@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/cli-cursor/-/cli-cursor-2.1.0.tgz#b35dac376479facc3e94747d41d0d0f5238ffcb5"
@@ -1328,6 +1332,10 @@ decode-uri-component@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/decode-uri-component/-/decode-uri-component-0.2.0.tgz#eb3913333458775cb84cd1a1fae062106bb87545"
 
+deep-clone-simple@1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/deep-clone-simple/-/deep-clone-simple-1.1.1.tgz#0ec358dfcce062928dbf58f0dfa484b4b5425d59"
+
 deep-extend@^0.6.0:
   version "0.6.0"
   resolved "https://registry.yarnpkg.com/deep-extend/-/deep-extend-0.6.0.tgz#c4fa7c95404a17a9c3e8ca7e1537312b736330ac"
@@ -1434,6 +1442,10 @@ domhandler@^2.3.0:
   dependencies:
     domelementtype "1"
 
+domify@1.4.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/domify/-/domify-1.4.0.tgz#11483617f764f8695975b4bdc79b14f0803b629b"
+
 domutils@1.5.1:
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/domutils/-/domutils-1.5.1.tgz#dcd8488a26f563d61079e48c9f7b7e32373682cf"
@@ -1525,6 +1537,10 @@ es-to-primitive@^1.1.1:
     is-callable "^1.1.1"
     is-date-object "^1.0.1"
     is-symbol "^1.0.1"
+
+es6-object-assign@1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/es6-object-assign/-/es6-object-assign-1.1.0.tgz#c2c3582656247c39ea107cb1e6652b6f9f24523c"
 
 escape-html@~1.0.3:
   version "1.0.3"
@@ -1677,6 +1693,10 @@ for-in@^1.0.2:
 foreach@^2.0.5:
   version "2.0.5"
   resolved "https://registry.yarnpkg.com/foreach/-/foreach-2.0.5.tgz#0bee005018aeb260d0a3af3ae658dd0136ec1b99"
+
+form-serialize@0.7.1:
+  version "0.7.1"
+  resolved "https://registry.yarnpkg.com/form-serialize/-/form-serialize-0.7.1.tgz#48f74e37d041de4f7d140dd2c54b37fff8d2e843"
 
 fragment-cache@^0.2.1:
   version "0.2.1"
@@ -2176,6 +2196,10 @@ js-beautify@^1.7.5:
     editorconfig "^0.13.2"
     mkdirp "~0.5.0"
     nopt "~3.0.1"
+
+js-simple-toast@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/js-simple-toast/-/js-simple-toast-1.0.3.tgz#66eb5123fbf0c3e7c6754068e03b12a17e0c12dd"
 
 "js-tokens@^3.0.0 || ^4.0.0":
   version "4.0.0"
@@ -4086,6 +4110,23 @@ v8-compile-cache@^2.0.0:
 vendors@^1.0.0:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/vendors/-/vendors-1.0.2.tgz#7fcb5eef9f5623b156bcea89ec37d63676f21801"
+
+vex-dialog@1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/vex-dialog/-/vex-dialog-1.1.0.tgz#8a2b57b709268da5e935c854ce9541a570421e2e"
+  dependencies:
+    deep-clone-simple "1.1.1"
+    domify "1.4.0"
+    form-serialize "0.7.1"
+
+vex-js@^4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/vex-js/-/vex-js-4.1.0.tgz#88c996c7a0003fe1c6f972096244b55fdf45890b"
+  dependencies:
+    classlist-polyfill "1.2.0"
+    domify "1.4.0"
+    es6-object-assign "1.1.0"
+    vex-dialog "1.1.0"
 
 vlq@^0.2.2:
   version "0.2.3"
