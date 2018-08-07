@@ -3,13 +3,12 @@ const example = {
   state: {
     counter: 0
   },
-  setup () {    
-    document.getElementById("button").addEventListener('click', this.count.bind(this));
-    console.log("Counter is", this.state.counter);
+  setup(factory) {
+    this.factory = factory;
   },
-  count() {    
-    this.state.counter = this.state.counter + 1;
-    console.log("Counter is", this.state.counter);
+  main() {
+    const selectedLayers = this.factory.getSelectedLayers();
+    console.log("Selected layers", selectedLayers.length);
   }
 }
 
