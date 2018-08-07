@@ -3,6 +3,13 @@
     "env"
   ],
   "plugins": [
-    "transform-class-properties"
+    "transform-class-properties",
+    "syntax-jsx",
+    [
+      "transform-react-jsx",
+      {
+        "pragma": "dom"
+      }
+    ]
   ]
 }
