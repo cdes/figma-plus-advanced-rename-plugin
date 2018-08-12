@@ -3,11 +3,11 @@ const example = {
   state: {
     counter: 0
   },
-  setup(factory) {
-    this.factory = factory;
+  setup() {
   },
   main() {
-    const selectedLayers = this.factory.getSelectedLayers();
+    const { FigmentsFactory } = window;
+    const selectedLayers = FigmentsFactory.getSelectedLayers();
     console.log("🔌 Selected layers", selectedLayers.length);
   }
 }

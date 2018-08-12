@@ -1,14 +1,13 @@
 const batchRename = {
   name: "Batch Rename",
   state: {},
-  setup(factory) {
-    this.factory = factory;
+  setup() {
   },
   main() {    
-    const factory = this.factory;
-    const { vex, toast } = factory; 
+    const { FigmentsFactory } = window;
+    const { vex, toast } = FigmentsFactory; 
     
-    const selectedLayers = factory.getSelectedLayers();    
+    const selectedLayers = FigmentsFactory.getSelectedLayers();    
 
     if (selectedLayers.length > 1) {
 

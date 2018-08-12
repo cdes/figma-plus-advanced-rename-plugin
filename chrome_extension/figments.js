@@ -1788,9 +1788,15 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+var instance = null;
+
 var Factory = function () {
   function Factory(figments) {
     _classCallCheck(this, Factory);
+
+    if (!instance) {
+      instance = this;
+    }
 
     this.figments = figments;
     this.vex = _vexJs2.default;
@@ -1799,6 +1805,8 @@ var Factory = function () {
     this.vex.defaultOptions.className = "vex-theme-plain";
 
     this.toast = _jsSimpleToast2.default;
+
+    return instance;
   }
 
   _createClass(Factory, [{
@@ -1905,7 +1913,7 @@ var Factory = function () {
         keys.map(function (key, index) {
           var plugin = figments[key];
 
-          plugin.setup(_this2);
+          plugin.setup();
           console.log("\uD83D\uDD0C Plugin added: " + plugin.name);
 
           _this2.addOption(plugin.name, plugin.main.bind(plugin));
@@ -1940,16 +1948,15 @@ Object.defineProperty(exports, "__esModule", {
 var batchRename = {
   name: "Batch Rename",
   state: {},
-  setup: function setup(factory) {
-    this.factory = factory;
-  },
+  setup: function setup() {},
   main: function main() {
-    var factory = this.factory;
-    var vex = factory.vex,
-        toast = factory.toast;
+    var _window = window,
+        FigmentsFactory = _window.FigmentsFactory;
+    var vex = FigmentsFactory.vex,
+        toast = FigmentsFactory.toast;
 
 
-    var selectedLayers = factory.getSelectedLayers();
+    var selectedLayers = FigmentsFactory.getSelectedLayers();
 
     if (selectedLayers.length > 1) {
 
@@ -2015,7 +2022,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var factory = new _factory2.default(figments);
 
-factory.run();
+window.FigmentsFactory = factory;
+window.FigmentsFactory.run();
 },{"vex-js/dist/css/vex.css":"../node_modules/vex-js/dist/css/vex.css","vex-js/dist/css/vex-theme-plain.css":"../node_modules/vex-js/dist/css/vex-theme-plain.css","./assets/figments.css":"assets/figments.css","./factory":"factory.js","./figments":"figments/index.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -2045,7 +2053,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = '' || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + '60023' + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + '64042' + '/');
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
 

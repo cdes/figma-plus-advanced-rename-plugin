@@ -4,9 +4,15 @@ import Layer from './core/layer';
 import vex from "vex-js";
 import toast from "js-simple-toast";
 
+let instance = null;
+
 class Factory {
 
   constructor(figments) {
+    if(!instance){
+      instance = this;
+    }
+
     this.figments = figments;
     this.vex = vex;
 
@@ -14,6 +20,8 @@ class Factory {
     this.vex.defaultOptions.className = "vex-theme-plain";
 
     this.toast = toast;
+
+    return instance;
   }
 
   run() {
@@ -106,7 +114,7 @@ class Factory {
       keys.map((key, index) => {
         const plugin = figments[key];
 
-        plugin.setup(this);
+        plugin.setup();
         console.log(`🔌 Plugin added: ${plugin.name}`);
 
         this.addOption(plugin.name, plugin.main.bind(plugin));
