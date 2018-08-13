@@ -1,4 +1,4 @@
-# Figments (pre-alpha)
+# Figments (beta)
 An unofficial plugins system for Figma.com
 
 ![Figments](https://user-images.githubusercontent.com/1207863/44014772-42b3cbd4-9ed6-11e8-983b-14af253948de.gif)
