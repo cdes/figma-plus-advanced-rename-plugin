@@ -1939,14 +1939,14 @@ var Factory = function () {
 }();
 
 exports.default = Factory;
-},{"jsx-render":"../node_modules/jsx-render/lib/dom.js","./core/layer":"core/layer.js","vex-js":"../node_modules/vex-js/dist/js/vex.js","js-simple-toast":"../node_modules/js-simple-toast/dist/simpleToast.js","vex-dialog":"../node_modules/vex-dialog/dist/vex.dialog.js"}],"figments/batch-rename.js":[function(require,module,exports) {
+},{"jsx-render":"../node_modules/jsx-render/lib/dom.js","./core/layer":"core/layer.js","vex-js":"../node_modules/vex-js/dist/js/vex.js","js-simple-toast":"../node_modules/js-simple-toast/dist/simpleToast.js","vex-dialog":"../node_modules/vex-dialog/dist/vex.dialog.js"}],"figments/rename-layers.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var batchRename = {
-  name: "Batch Rename",
+var renameLayers = {
+  name: "Rename Layers",
   state: {},
   setup: function setup() {},
   main: function main() {
@@ -1981,7 +1981,7 @@ var batchRename = {
   }
 };
 
-exports.default = batchRename;
+exports.default = renameLayers;
 },{}],"figments/index.js":[function(require,module,exports) {
 'use strict';
 
@@ -1989,17 +1989,17 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _batchRename = require('./batch-rename');
+var _renameLayers = require('./rename-layers');
 
-Object.defineProperty(exports, 'batchRename', {
+Object.defineProperty(exports, 'renameLayers', {
   enumerable: true,
   get: function () {
-    return _interopRequireDefault(_batchRename).default;
+    return _interopRequireDefault(_renameLayers).default;
   }
 });
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-},{"./batch-rename":"figments/batch-rename.js"}],"index.js":[function(require,module,exports) {
+},{"./rename-layers":"figments/rename-layers.js"}],"index.js":[function(require,module,exports) {
 'use strict';
 
 require('vex-js/dist/css/vex.css');
@@ -2053,7 +2053,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = '' || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + '64042' + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + '49405' + '/');
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
 

@@ -1,1 +1,1 @@
-export { default as batchRename } from './batch-rename';
+export { default as renameLayers } from './rename-layers';

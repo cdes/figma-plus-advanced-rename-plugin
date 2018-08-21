@@ -1,5 +1,5 @@
-const batchRename = {
-  name: "Batch Rename",
+const renameLayers = {
+  name: "Rename Layers",
   state: {},
   setup() {
   },
@@ -33,4 +33,4 @@ const batchRename = {
   }
 }
 
-export default batchRename;
+export default renameLayers;
