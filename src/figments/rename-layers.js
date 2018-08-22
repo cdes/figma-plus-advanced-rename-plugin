@@ -17,7 +17,8 @@ const renameLayers = {
         callback: function (value) {
           if (value) {
             selectedLayers.map((layer, index) => {
-              layer.name = value;
+              
+              FigmentsFactory.renameLayer(layer.id, value);
               
               if(index === selectedLayers.length - 1) {
                 toast.show(`Renamed ${selectedLayers.length} layers.`);

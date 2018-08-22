@@ -1,8 +1,10 @@
 import dom from "jsx-render";
-import Layer from './core/layer';
-
 import vex from "vex-js";
 import toast from "js-simple-toast";
+
+import { sortLayerByListPosition } from './core/utilities';
+
+import { isEmpty, Map } from "lodash";
 
 let instance = null;
 
@@ -127,9 +129,87 @@ class Factory {
   }
 
   getSelectedLayers() {
-    const nodes = Array.from(document.querySelectorAll('div[class*="object_row--selected"]'));
-    const layers = nodes.map(layer => new Layer(layer));
+
+    /*
+      Figma does not provide all layer properties when accessed via sceneGraph.get(key)
+      We can get more properties from selectionProperties.
+      However, selectionProperties is not populated until one or more layers are selected.
+      This means that when we use it we will have to deselect all, select each layer to
+      get its properties then finally put back our selection.
+    */
+
+    const { App } = window;
+
+    // get a copy of selection ids, we don't want to mutate the actual object
+    const sceneGraphSelection = App._store.getState().mirror.sceneGraphSelection;    
+
+    if(isEmpty(sceneGraphSelection)) {
+      //nothing is selected
+      return [];
+    }
+
+    const selectionIds = JSON.parse(JSON.stringify(sceneGraphSelection));    
+
+    //clear selection
+    App.sendMessage('clearSelection');
+
+    // here we will store our selected layers info
+    let layers = [];
+
+    //loop through each id, select the layer and cache its properties
+    Object.keys(selectionIds).map((key, index) => {
+
+      //select the layer
+      App.sendMessage('addToSelection', { nodeIds: [key] });
+
+      //get a copy of its properties
+      const selectionProperties = App._store.getState().mirror.selectionProperties;
+      const properties = JSON.parse(JSON.stringify(selectionProperties));
+      const sceneGraph = App._store.getState().mirror.sceneGraph.get(key);
+
+      //cache them
+      layers.push({
+          id: key,
+          name: sceneGraph.name,
+          width: properties.width,
+          height: properties.height,
+          angle: properties.angle,
+          position: sceneGraph.position,
+          x: properties.x,
+          y: properties.y,
+          opacity: properties.opacity,
+          visible: properties.visible,
+          mask: properties.mask,
+          rectangleBottomLeftCornerRadius: properties.rectangleBottomLeftCornerRadius,
+          rectangleBottomRightCornerRadius: properties.rectangleBottomRightCornerRadius,
+          rectangleCornerRadiiIndependent: properties.rectangleCornerRadiiIndependent,
+          rectangleCornerToolIndependent: properties.rectangleCornerToolIndependent,
+          rectangleTopLeftCornerRadius: properties.rectangleTopLeftCornerRadius,
+          rectangleTopRightCornerRadius: properties.rectangleTopRightCornerRadius,
+      });
+
+      //clear selection
+      App.sendMessage('clearSelection');
+    });
+    
+    //make sure that the layers array is sorted the same as the layers list
+    layers.sort(sortLayerByListPosition);
+    layers = layers.reverse();
+    
+    //reselect layers
+    layers.map(layer => {
+      App.sendMessage('addToSelection', { nodeIds: layer.id });
+    });
+
     return layers;
+  }
+
+  renameLayer(layerId, newName) {
+    App.sendMessage('setNodeProperty', {
+      nodeId: layerId,
+      property: 'name',
+      value: newName
+    });
   }
   
 }
