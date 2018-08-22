@@ -41,3 +41,129 @@
   padding: 8px 16px !important;
   border-radius: 500px !important;
 }
+
+.vex.vex-theme-plain .vex-content {
+  border-radius: 3px;
+  box-shadow: 0 0 0.5px 0.5px rgba(0,0,0,.2), 0 2px 14px rgba(0,0,0,.15);
+  padding: 0 !important;
+  background: #f8f8f8 !important;
+}
+
+
+
+.vex.vex-theme-plain .vex-dialog-message {
+  font: normal normal 400 14px/18px Roboto,sans-serif;
+  height: 36px;
+  background: #2c2c2c;
+  cursor: default;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding-left: 12px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  color: white;
+}
+
+
+.vex.vex-theme-plain .vex-dialog-form .vex-dialog-input input[type="text"] {
+  font-size: 11px;
+  color: #444;
+  fill: #444;
+  cursor: default;
+  background: #fcfcfc;
+  width: 100%;
+  height: 24px;
+  padding: 0 2px 0 4px;
+  box-sizing: border-box;
+  border: 1px solid #d4d4d4;
+  border-radius: 3px;
+}
+
+.vex.vex-theme-plain .vex-dialog-input {
+  padding: 8px 30px 0;
+}
+
+.vex.vex-theme-plain .vex-dialog-input label {
+  margin-bottom: 4px;
+}
+
+.vex.vex-theme-plain .vex-dialog-buttons {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  padding: 12px;
+  font-size: 11px;
+  border-top: 1px solid #efefef;
+  background: #f1f1f1 !important;
+}
+
+.vex.vex-theme-plain .vex-dialog-buttons button.vex-dialog-button {
+  display: block;
+  text-align: center;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  height: 30px;
+  line-height: 28px;
+  max-width: 180px;
+  padding: 0 11px;
+  color: #444;
+  font-weight: 400;
+  background-color: transparent;
+  box-sizing: border-box;
+  border: 1px solid #d4d4d4;
+  border-radius: 3px !important;
+}
+
+.vex.vex-theme-plain .vex-dialog-buttons button.vex-dialog-button:last-child {
+  margin-left: 12px !important;
+}
+
+
+.vex.vex-theme-plain button.vex-dialog-button-primary.vex-dialog-button {
+  color: #fff;
+  background-color: #30c2ff;
+  border-color: #30c2ff;
+}
+
+.vex.vex-theme-plain .vex-dialog-form .vex-dialog-input input[type="text"]:focus {
+  box-shadow: none;
+  border-color: #30c2fe;
+}
+
+.vex-custom-field-description {
+  margin: 10px 0;
+}
+
+.vex table th {
+  opacity: 0.5;
+}
+
+.vex table th, .vex table td {
+  text-align: left;
+  padding: 2px;
+  border-bottom: 1px solid #ddd;
+}

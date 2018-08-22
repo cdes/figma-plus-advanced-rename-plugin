@@ -4,6 +4,7 @@
   ],
   "plugins": [
     "transform-class-properties",
+    "transform-object-rest-spread",
     "syntax-jsx",
     [
       "transform-react-jsx",

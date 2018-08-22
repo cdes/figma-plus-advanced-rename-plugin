@@ -10,15 +10,18 @@
     "start": "parcel watch ./src/index.js --out-dir ./chrome_extension --out-file figments.js"
   },
   "dependencies": {
+    "change-case": "^3.0.2",
     "jquery": "^3.3.1",
     "js-simple-toast": "^1.0.3",
     "jsx-render": "^0.6.6",
     "lodash": "^4.17.10",
+    "titlecase": "^1.1.2",
     "vex-js": "^4.1.0"
   },
   "devDependencies": {
     "babel-plugin-syntax-jsx": "^6.18.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-plugin-transform-react-jsx": "^6.24.1",
     "babel-preset-env": "^1.7.0",
     "parcel-bundler": "^1.9.7"
