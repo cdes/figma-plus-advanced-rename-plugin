@@ -2,9 +2,10 @@
   "name": "Figments",
   "version": "1.0",
   "description": "The unofficial Figma plugins manager",
-  "permissions": ["activeTab", "declarativeContent", "storage"],
+  "permissions": ["activeTab", "declarativeContent"],
   "content_scripts": [
     {
+      "all_frames": true,
       "matches": [
         "https://www.figma.com/file/*/*"
       ],
@@ -12,8 +13,9 @@
         "figments.css"
       ],
       "js": [
-        "figments.js"
-      ]
+        "inject.js"
+      ],
+      "run_at": "document_end"
     }
   ],
   "icons": {
@@ -22,5 +24,7 @@
     "48": "images/plug48.png",
     "128": "images/plug128.png"
   },
-  "manifest_version": 2
+  "manifest_version": 2,
+  "web_accessible_resources": [ "figments.js" ],
+  "content_security_policy": "script-src 'self'; object-src 'self'"
 }
