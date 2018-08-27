@@ -141,70 +141,45 @@ class Factory {
         const { App } = window;
         
         // get a copy of selection ids, we don't want to mutate the actual object
-        const sceneGraphSelection = App._store.getState().mirror.sceneGraphSelection;    
+        const sceneGraphSelection = App._state.mirror.sceneGraphSelection;    
         
         if(isEmpty(sceneGraphSelection)) {
             //nothing is selected
             return [];
         }
         
-        const selectionIds = JSON.parse(JSON.stringify(sceneGraphSelection));
-        const pagesList = App._store.getState().mirror.appModel.pagesList;  
-        
-        //clear selection
-        App.sendMessage('clearSelection');
+        const selectionIds = Object.keys(sceneGraphSelection);
+        const pagesList = App._state.mirror.appModel.pagesList;
+        const bounds = App.sendMessage("getBoundsForNodes",{nodeIds: selectionIds}).args;
         
         // here we will store our selected layers info
         let layers = [];
         
-        
         //loop through each id, select the layer and cache its properties
-        Object.keys(selectionIds).map((key, index) => {
-            
-            //select the layer
-            App.sendMessage('addToSelection', { nodeIds: [key] });
-            
+        selectionIds.map(id => {
+                        
             //get a copy of its properties
-            const selectionProperties = App._store.getState().mirror.selectionProperties;
-            const properties = JSON.parse(JSON.stringify(selectionProperties));
-            const sceneGraph = App._store.getState().mirror.sceneGraph.get(key);
-            const currentPageId = App._store.getState().mirror.appModel.currentPage;
+            const sceneGraph = App._state.mirror.sceneGraph.get(id);
+            const currentPageId = App._state.mirror.appModel.currentPage;
             const currentPageName = pagesList[currentPageId];
             
             //cache them
             layers.push({
-                id: key,
+                id: id,
                 name: sceneGraph.name,
-                width: properties.width,
-                height: properties.height,
-                angle: properties.angle,
+                width: bounds[id].width,
+                height: bounds[id].height,
                 position: sceneGraph.position,
                 pageName: currentPageName,
-                x: properties.x,
-                y: properties.y,
-                opacity: properties.opacity,
-                visible: properties.visible,
-                mask: properties.mask,
-                rectangleBottomLeftCornerRadius: properties.rectangleBottomLeftCornerRadius,
-                rectangleBottomRightCornerRadius: properties.rectangleBottomRightCornerRadius,
-                rectangleCornerRadiiIndependent: properties.rectangleCornerRadiiIndependent,
-                rectangleCornerToolIndependent: properties.rectangleCornerToolIndependent,
-                rectangleTopLeftCornerRadius: properties.rectangleTopLeftCornerRadius,
-                rectangleTopRightCornerRadius: properties.rectangleTopRightCornerRadius,
+                x: bounds[id].x,
+                y: bounds[id].y,
             });
             
-            //clear selection
-            App.sendMessage('clearSelection');
         });
         
         //make sure that the layers array is sorted the same as the layers list
         layers.sort(sortLayerByListPosition);
         layers = layers.reverse();
-        
-        //reselect layers
-        layers.map(layer => {
-            App.sendMessage('addToSelection', { nodeIds: [layer.id] });
-        });
         
         return layers;
     }

@@ -21057,69 +21057,44 @@ var Factory = function () {
 
             // get a copy of selection ids, we don't want to mutate the actual object
 
-            var sceneGraphSelection = App._store.getState().mirror.sceneGraphSelection;
+            var sceneGraphSelection = App._state.mirror.sceneGraphSelection;
 
             if ((0, _lodash.isEmpty)(sceneGraphSelection)) {
                 //nothing is selected
                 return [];
             }
 
-            var selectionIds = JSON.parse(JSON.stringify(sceneGraphSelection));
-            var pagesList = App._store.getState().mirror.appModel.pagesList;
-
-            //clear selection
-            App.sendMessage('clearSelection');
+            var selectionIds = Object.keys(sceneGraphSelection);
+            var pagesList = App._state.mirror.appModel.pagesList;
+            var bounds = App.sendMessage("getBoundsForNodes", { nodeIds: selectionIds }).args;
 
             // here we will store our selected layers info
             var layers = [];
 
             //loop through each id, select the layer and cache its properties
-            Object.keys(selectionIds).map(function (key, index) {
-
-                //select the layer
-                App.sendMessage('addToSelection', { nodeIds: [key] });
+            selectionIds.map(function (id) {
 
                 //get a copy of its properties
-                var selectionProperties = App._store.getState().mirror.selectionProperties;
-                var properties = JSON.parse(JSON.stringify(selectionProperties));
-                var sceneGraph = App._store.getState().mirror.sceneGraph.get(key);
-                var currentPageId = App._store.getState().mirror.appModel.currentPage;
+                var sceneGraph = App._state.mirror.sceneGraph.get(id);
+                var currentPageId = App._state.mirror.appModel.currentPage;
                 var currentPageName = pagesList[currentPageId];
 
                 //cache them
                 layers.push({
-                    id: key,
+                    id: id,
                     name: sceneGraph.name,
-                    width: properties.width,
-                    height: properties.height,
-                    angle: properties.angle,
+                    width: bounds[id].width,
+                    height: bounds[id].height,
                     position: sceneGraph.position,
                     pageName: currentPageName,
-                    x: properties.x,
-                    y: properties.y,
-                    opacity: properties.opacity,
-                    visible: properties.visible,
-                    mask: properties.mask,
-                    rectangleBottomLeftCornerRadius: properties.rectangleBottomLeftCornerRadius,
-                    rectangleBottomRightCornerRadius: properties.rectangleBottomRightCornerRadius,
-                    rectangleCornerRadiiIndependent: properties.rectangleCornerRadiiIndependent,
-                    rectangleCornerToolIndependent: properties.rectangleCornerToolIndependent,
-                    rectangleTopLeftCornerRadius: properties.rectangleTopLeftCornerRadius,
-                    rectangleTopRightCornerRadius: properties.rectangleTopRightCornerRadius
+                    x: bounds[id].x,
+                    y: bounds[id].y
                 });
-
-                //clear selection
-                App.sendMessage('clearSelection');
             });
 
             //make sure that the layers array is sorted the same as the layers list
             layers.sort(_utilities.sortLayerByListPosition);
             layers = layers.reverse();
-
-            //reselect layers
-            layers.map(function (layer) {
-                App.sendMessage('addToSelection', { nodeIds: [layer.id] });
-            });
 
             return layers;
         }
@@ -22020,7 +21995,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = '' || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + '49405' + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + '59001' + '/');
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
 
