@@ -8,7 +8,7 @@
   "license": "MIT",
   "scripts": {
     "start": "parcel watch ./src/index.js --out-dir ./chrome_extension --out-file figments.js",
-    "build": "parcel build ./src/index.js"
+    "build": "parcel build ./src/index.js --out-dir ./chrome_extension --out-file figments.js"
   },
   "dependencies": {
     "change-case": "^3.0.2",

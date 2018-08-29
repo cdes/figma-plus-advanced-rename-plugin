@@ -30,14 +30,26 @@ const renameLayers = {
           <tr><td>%A</td><td>Alphabet sequence</td></tr>
           <tr><td>%nn</td><td>01, 02, 03 and so on</td></tr>
           <tr><td>%a</td><td>Lowercase alphabet sequence</td></tr>
+          </tbody></table>
+          </div>
+
+          <table width="100%">
+          <tbody><tr><th width="25%">Keyword</th><th>Result</th></tr>
           <tr><td>%*</td><td>Current layer name</td></tr>
           <tr><td>%*u%</td><td>Convert to UPPER CASE</td></tr>
           <tr><td>%*l%</td><td>Convert to lower case</td></tr>
           <tr><td>%*t%</td><td>Convert to Title Case</td></tr>
           <tr><td>%*uf%</td><td>Convert to Upper first word</td></tr>
           <tr><td>%*c%</td><td>Convert to camelCase (Removes spaces)</td></tr>
-          <tr><td>%W</td><td>Layer's width</td></tr>
-          <tr><td>%H</td><td>Layer's height</td></tr>
+          </tbody></table>
+          </div>
+
+          <table width="100%">
+          <tbody><tr><th width="25%">Keyword</th><th>Result</th></tr>
+          <tr><td>%o</td><td>Parent's name</td></tr>
+          <tr><td>%p</td><td>Page's name</td></tr>
+          <tr><td>%w</td><td>Layer's width</td></tr>
+          <tr><td>%h</td><td>Layer's height</td></tr>
           </tbody></table>
           </div>
         `,

@@ -160,6 +160,7 @@ class Factory {
                         
             //get a copy of its properties
             const sceneGraph = App._state.mirror.sceneGraph.get(id);
+            const parentSceneGraph = App._state.mirror.sceneGraph.get(sceneGraph.parent);
             const currentPageId = App._state.mirror.appModel.currentPage;
             const currentPageName = pagesList[currentPageId];
             
@@ -171,8 +172,10 @@ class Factory {
                 height: bounds[id].height,
                 position: sceneGraph.position,
                 pageName: currentPageName,
+                parentName: parentSceneGraph.name,
                 x: bounds[id].x,
                 y: bounds[id].y,
+                type: sceneGraph.type
             });
             
         });
