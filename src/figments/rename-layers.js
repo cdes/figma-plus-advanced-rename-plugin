@@ -7,7 +7,7 @@ const renameLayers = {
   },
   main() {    
     const { FigmentsFactory } = window;
-    const { vex, toast } = FigmentsFactory; 
+    const { vex } = FigmentsFactory; 
     
     const selectedLayers = FigmentsFactory.getSelectedLayers();    
     
@@ -78,14 +78,14 @@ const renameLayers = {
             FigmentsFactory.renameLayer(layer.id, newName);
             
             if(index === selectedLayers.length - 1) {
-              toast.show(`Renamed ${selectedLayers.length} layers.`);
+              FigmentsFactory.toast(`Renamed ${selectedLayers.length} layers.`);
             }
           });
         }
       })
       
     } else {
-      toast.show("You must select at least 2 layers.");
+      FigmentsFactory.toast("You must select at least 2 layers.");
     }
   }
 }

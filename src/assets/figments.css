@@ -27,29 +27,12 @@
     animation-duration: .1s !important;
 }
 
-.toast-content-container {
-  top: 64px !important;
-  opacity: .8 !important;
-}
-
-.toast-container {
-  background-color: transparent !important;
-}
-
-.toast-content {
-  font-size: 12px !important;
-  padding: 8px 16px !important;
-  border-radius: 500px !important;
-}
-
 .vex.vex-theme-plain .vex-content {
   border-radius: 3px;
   box-shadow: 0 0 0.5px 0.5px rgba(0,0,0,.2), 0 2px 14px rgba(0,0,0,.15);
   padding: 0 !important;
   background: #f8f8f8 !important;
 }
-
-
 
 .vex.vex-theme-plain .vex-dialog-message {
   font: normal normal 400 14px/18px Roboto,sans-serif;

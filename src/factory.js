@@ -1,6 +1,5 @@
 import dom from "jsx-render";
 import vex from "vex-js";
-import toast from "js-simple-toast";
 
 import { sortLayerByListPosition } from './core/utilities';
 
@@ -20,9 +19,7 @@ class Factory {
         
         this.vex.registerPlugin(require("vex-dialog"));
         this.vex.defaultOptions.className = "vex-theme-plain";
-        
-        this.toast = toast;
-        
+              
         return instance;
     }
     
@@ -194,6 +191,16 @@ class Factory {
             value: newName
         });
     }
+
+    toast(message) {
+      App._store.dispatch({
+        type: "VISUAL_BELL_ENQUEUE",
+        payload: {
+            message: message || ""
+          }
+      });
+    }
+    
     
 }
 

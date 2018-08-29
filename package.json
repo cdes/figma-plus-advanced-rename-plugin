@@ -13,7 +13,6 @@
   "dependencies": {
     "change-case": "^3.0.2",
     "jquery": "^3.3.1",
-    "js-simple-toast": "^1.0.3",
     "jsx-render": "^0.6.6",
     "lodash": "^4.17.10",
     "titlecase": "^1.1.2",
