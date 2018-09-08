@@ -7,7 +7,7 @@
     {
       "all_frames": true,
       "matches": [
-        "https://www.figma.com/file/*/*"
+        "*://www.figma.com/*"
       ],
       "css": [
         "figments.css"

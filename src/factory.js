@@ -19,12 +19,15 @@ class Factory {
         
         this.vex.registerPlugin(require("vex-dialog"));
         this.vex.defaultOptions.className = "vex-theme-plain";
+
+        this.isInjecting = false;
               
         return instance;
     }
     
     run() {
-        console.log("🔌 Injecting Figments...");
+        console.log("🔌 Waiting for Figma");
+        this.isInjecting = true;
         
         const pollingRun = setInterval(() => {
             const buttonGroup = document.querySelector(
@@ -38,7 +41,8 @@ class Factory {
     }
     
     init() {
-        console.log("🔌 Initilizing...");
+        this.isInjecting = false;
+        console.log("🔌 Initilizing");
         const buttonGroup = document.querySelector(".toolbar_view--buttonGroup--2wM3n");
         
         const markup = <span className="toolbar_view--actionButtonContainer--J2txY">
@@ -82,7 +86,6 @@ class Factory {
     
     toggleDropdown () {    
         if(this.figmentsDropdown.style.display === "none") {
-            console.log("🔌 Show menu");    
             
             const triggerRect = this.figmentsTrigger.getBoundingClientRect();
             this.figmentsTrigger.classList.add("activeButton-3");
@@ -94,7 +97,6 @@ class Factory {
             this.figmentsMenu.style.left = triggerRect.left + (triggerRect.width / 2) - (menuRect.width / 2) + "px";
         }
         else {
-            console.log("🔌 Hide menu");    
             
             this.figmentsDropdown.style.display = "none";
             this.figmentsTrigger.classList.remove("activeButton-3");
@@ -103,7 +105,7 @@ class Factory {
     }
     
     setupPlugins() {
-        console.log("🔌 Setting up plugins...");
+        console.log("🔌 Setting up plugins");
         const figments = this.figments;
         const keys = Object.keys(figments);
         
@@ -129,15 +131,11 @@ class Factory {
         
         /*
         Figma does not provide all layer properties when accessed via sceneGraph.get(key)
-        We can get more properties from selectionProperties.
-        However, selectionProperties is not populated until one or more layers are selected.
-        This means that when we use it we will have to deselect all, select each layer to
-        get its properties then finally put back our selection.
+        We can get more properties by using other means.
         */
         
         const { App } = window;
         
-        // get a copy of selection ids, we don't want to mutate the actual object
         const sceneGraphSelection = App._state.mirror.sceneGraphSelection;    
         
         if(isEmpty(sceneGraphSelection)) {
@@ -152,7 +150,7 @@ class Factory {
         // here we will store our selected layers info
         let layers = [];
         
-        //loop through each id, select the layer and cache its properties
+        //loop through each layer and cache its properties
         selectionIds.map(id => {
                         
             //get a copy of its properties
@@ -177,7 +175,7 @@ class Factory {
             
         });
         
-        //make sure that the layers array is sorted the same as the layers list
+        //make sure that the layers array is sorted the same as Figma's layers list
         layers.sort(sortLayerByListPosition);
         layers = layers.reverse();
         
