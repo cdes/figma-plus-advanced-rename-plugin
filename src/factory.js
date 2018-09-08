@@ -3,26 +3,18 @@ import vex from "vex-js";
 
 import { sortLayerByListPosition } from './core/utilities';
 
-import { isEmpty, Map } from "lodash";
-
-let instance = null;
+import { isEmpty } from "lodash";
 
 class Factory {
     
     constructor(figments) {
-        if(!instance){
-            instance = this;
-        }
-        
         this.figments = figments;
         this.vex = vex;
         
         this.vex.registerPlugin(require("vex-dialog"));
         this.vex.defaultOptions.className = "vex-theme-plain";
 
-        this.isInjecting = false;
-              
-        return instance;
+        this.isInjecting = false;              
     }
     
     run() {

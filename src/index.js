@@ -22,6 +22,7 @@ window.FigmentsFactory.run();
       }
 
       if(!window.FigmentsFactory.isInjecting) {
+        console.log("🔌 Reinjecting");
         window.FigmentsFactory.run();
       }
 
