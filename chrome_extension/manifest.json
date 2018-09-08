@@ -2,7 +2,6 @@
   "name": "Figments",
   "version": "1.0",
   "description": "The unofficial Figma plugins manager",
-  "permissions": ["activeTab", "declarativeContent"],
   "content_scripts": [
     {
       "all_frames": true,
