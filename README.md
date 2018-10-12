@@ -26,10 +26,10 @@ The factory injects a dropdown menu Figma's UI, and iterate over the plugins (fi
 It also injects 2 useful js libraries ([vex](https://github.com/HubSpot/vex), [toast](https://github.com/zeuslfhj/simple-toast)).
 
 #### Figments:
-Each figment is an object with 3 required properties: `name, setup(), main()`.
-name: the name of the plugin that will be displayed in the injected menu.
-setup(): think of it as the constructor for your figment.
-main(): the method that will be called when a user clicks on the injected menu option.
+Each figment is an object with 3 required properties: `name, setup(), main()`.<br /><br />
+name: the name of the plugin that will be displayed in the injected menu.<br />
+setup(): think of it as the constructor for your figment.<br />
+main(): the method that will be called when a user clicks on the injected menu option.<br />
 
 
 ### Contributing a new plugin
