@@ -1,7 +1,7 @@
 # Figments (alpha)
 An unofficial plugins system for Figma.com
 
-![Figments](https://user-images.githubusercontent.com/1207863/44014772-42b3cbd4-9ed6-11e8-983b-14af253948de.gif)
+![Figments](https://user-images.githubusercontent.com/1207863/46877653-0ca76980-ce4a-11e8-876c-a8acda14d230.gif)
 
 
 ## Why?
