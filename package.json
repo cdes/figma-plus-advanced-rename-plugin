@@ -1,5 +1,6 @@
 {
-  "name": "figments",
+  "name": "figma-batch-rename-plugin",
+  "productName": "Batch Rename",
   "version": "1.0.0",
   "description": "An unofficial plugins system for Figma.com",
   "main": "index.js",
@@ -7,22 +8,18 @@
   "author": "Ahmed Al Haddad <ahmed.hdd@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "parcel watch ./src/index.js --out-dir ./chrome_extension --out-file figments.js",
-    "build": "parcel build ./src/index.js --out-dir ./chrome_extension --out-file figments.js"
+    "start": "parcel watch ./src/index.js --out-dir ./dist --out-file batch-rename.js",
+    "build": "parcel build ./src/index.js --out-dir ./dist --out-file batch-rename.js"
   },
   "dependencies": {
     "change-case": "^3.0.2",
-    "jquery": "^3.3.1",
-    "jsx-render": "^0.6.6",
-    "lodash": "^4.17.10",
+    "lodash.isempty": "^4.4.0",
     "titlecase": "^1.1.2",
     "vex-js": "^4.1.0"
   },
   "devDependencies": {
-    "babel-plugin-syntax-jsx": "^6.18.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "babel-plugin-transform-react-jsx": "^6.24.1",
     "babel-preset-env": "^1.7.0",
     "parcel-bundler": "^1.9.7"
   }

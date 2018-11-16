@@ -1,1 +1,0 @@
-export { default as renameLayers } from './rename-layers/rename-layers';

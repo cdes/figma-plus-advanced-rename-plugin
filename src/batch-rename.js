@@ -1,18 +1,19 @@
+import vex from "vex-js";
 import rename from "./rename";
+import { getSelectedLayers, toast, renameLayer } from "./utilities";
 
-const renameLayers = {
-  name: "Rename Layers",
-  state: {},
-  setup() {
+const batchRenamePlugin = {
+  name: "Batch Rename",
+  id: "batchRenameButton",
+  state: {
+    isOpen: false,
   },
   main() {    
-    const { FigmentsFactory } = window;
-    const { vex } = FigmentsFactory; 
     
-    const selectedLayers = FigmentsFactory.getSelectedLayers();    
+    const selectedLayers = getSelectedLayers();    
     
     if (selectedLayers.length > 1) {
-      
+      this.state.isOpen = true;
       vex.dialog.open({
         message: "Rename Selected Layers (" + selectedLayers.length + ")",
         input: `
@@ -58,6 +59,9 @@ const renameLayers = {
           {...vex.dialog.buttons.NO, text: 'Cancel' }
         ],
         callback: function (data) {
+
+          this.state.isOpen = false;
+
           if (!data) {
             return console.log('Cancelled')
           }
@@ -75,19 +79,51 @@ const renameLayers = {
               selectionCount: selectedLayers.length
             });
             
-            FigmentsFactory.renameLayer(layer.id, newName);
+            renameLayer(layer.id, newName);
             
             if(index === selectedLayers.length - 1) {
-              FigmentsFactory.toast(`Renamed ${selectedLayers.length} layers.`);
+              toast(`Renamed ${selectedLayers.length} layers.`);
             }
           });
         }
       })
       
     } else {
-      FigmentsFactory.toast("You must select at least 2 layers.");
+      toast("You must select at least 2 layers.");
     }
   }
 }
 
-export default renameLayers;
+if (window.figmaPlugin) {
+	usePluginAPI(window.figmaPlugin);
+} else {
+	Object.defineProperty(window, 'figmaPlugin', {
+		configurable: true,
+		enumerable: true,
+		writeable: true,
+		get: function() {
+			return this._figmaPlugin;
+		},
+		set: function(val) {
+			this._figmaPlugin = val;
+			usePluginAPI(val);
+		}
+	});
+}
+
+function usePluginAPI(figmaPlugin) {
+	const shortcut = { command: true, shift: true, key: 'R' };
+	figmaPlugin.createContextMenuButton.Canvas(
+		batchRenamePlugin.id,
+		batchRenamePlugin.name,
+		batchRenamePlugin.main(),
+		shortcut
+	);
+	figmaPlugin.onFileLoaded(() => {
+		figmaPlugin.createKeyboardShortcut(shortcut, () => {
+			if (!batchRenamePlugin.state.isOpen) {
+				batchRenamePlugin.main()
+			}
+		});
+	});
+}
