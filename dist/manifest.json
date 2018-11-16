@@ -11,11 +11,11 @@
 			"version": "1.0.0",
 			"date": "11/16/2018",
 			"notes": "Restructured the plugin to be usable by plugin manager."
-		},
+		}
 	],
 	"images": [
 		"https://raw.githubusercontent.com/jachui/figma-batch-rename-plugin/gh-pages/screenshots/animation.gif",
-		"https://raw.githubusercontent.com/jachui/figma-batch-rename-plugin/gh-pages/screenshots/screenshot1.jpg",
+		"https://raw.githubusercontent.com/jachui/figma-batch-rename-plugin/gh-pages/screenshots/screenshot1.jpg"
 	],
 	"js": [
 		"https://jachui.github.io/figma-batch-rename-plugin/dist/js/batch-rename.js"
