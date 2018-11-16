@@ -65,12 +65,10 @@ class BatchRename {
           {...vex.dialog.buttons.NO, text: 'Cancel' }
         ],
         callback: (data) => {
-          console.log("isClosed");
-
           this.state.isOpen = false;
 
           if (!data) {
-            return console.log('Cancelled')
+            return;
           }
 
           selectedLayers.map((layer, index) => {
@@ -107,6 +105,18 @@ const batchRenamePlugin = new BatchRename();
 const usePluginAPI = (figmaPlugin) => {
 	const shortcut = { command: true, shift: true, key: 'R' };
 	figmaPlugin.createContextMenuButton.Canvas(
+		batchRenamePlugin.id,
+		batchRenamePlugin.name,
+		batchRenamePlugin.renameLayers.bind(batchRenamePlugin),
+		shortcut
+  );
+  figmaPlugin.createContextMenuButton.Selection(
+		batchRenamePlugin.id,
+		batchRenamePlugin.name,
+		batchRenamePlugin.renameLayers.bind(batchRenamePlugin),
+		shortcut
+  );
+  figmaPlugin.createContextMenuButton.ObjectsPanel(
 		batchRenamePlugin.id,
 		batchRenamePlugin.name,
 		batchRenamePlugin.renameLayers.bind(batchRenamePlugin),

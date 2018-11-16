@@ -38,6 +38,7 @@ export const getSelectedLayers = () => {
   const selectionIds = Object.keys(sceneGraphSelection);
   const pagesList = App._state.mirror.appModel.pagesList;
   const bounds = App.sendMessage("getBoundsForNodes",{nodeIds: selectionIds}).args;
+  const currentPageId = App._state.mirror.appModel.currentPage;
   
   // here we will store our selected layers info
   let layers = [];
@@ -47,10 +48,8 @@ export const getSelectedLayers = () => {
                   
       //get a copy of its properties
       const sceneGraph = App._state.mirror.sceneGraph.get(id);
-      const currentPageName = pagesList.filter(page => page.nodeId === currentPage)[0].name;
+      const currentPageName = pagesList.filter(page => page.nodeId === currentPageId)[0].name;
       const parentSceneGraph = App._state.mirror.sceneGraph.get(sceneGraph.parent);
-      const currentPageId = App._state.mirror.appModel.currentPage;
-      const currentPageName = pagesList[currentPageId];
       
       //cache them
       layers.push({
