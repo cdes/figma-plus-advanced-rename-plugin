@@ -1,24 +1,3 @@
-#figments-menu {
-  top: 48px;
-  min-width: 160px;
-}
-
-#figments-menu .dropdown--option--20q-- {
-  padding: 0 18px;
-}
-
-#figments-trigger .svg {
-  width: 20px;
-}
-
-#figments-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-}
-
 .vex-overlay,
 .vex-overlay.vex-closing,
 .vex-content,

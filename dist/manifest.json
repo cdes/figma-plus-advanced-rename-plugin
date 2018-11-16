@@ -1,0 +1,24 @@
+{
+	"id": "Batch Rename",
+	"name": "batchRename",
+	"version": "1.0.0",
+	"author": "Ahmed Al Haddad",
+	"github": "https://github.com/cdes/figma-batch-rename-plugin",
+  "description": "A better and more powerful batch rename plugin for Figma. Provides tons of options (thanks to Sketch Renamer). Accessible via the toolbar button or keyboard shortcut Control/Command + R.",
+	"instructions": "Select 2 or more layers, right click and select 'Batch Rename', or press Control/Command + R.",
+	"updates": [
+		{
+			"version": "1.0.0",
+			"date": "11/16/2018",
+			"notes": "Restructured the plugin to be usable by plugin manager."
+		},
+	],
+	"images": [
+		"https://raw.githubusercontent.com/jachui/figma-batch-rename-plugin/gh-pages/screenshots/animation.gif",
+		"https://raw.githubusercontent.com/jachui/figma-batch-rename-plugin/gh-pages/screenshots/screenshot1.jpg",
+	],
+	"js": [
+		"https://jachui.github.io/figma-batch-rename-plugin/dist/js/batch-rename.js"
+	],
+	"css": ["https://jachui.github.io/figma-batch-rename-plugin/dist/css/batch-rename.css"]
+}
