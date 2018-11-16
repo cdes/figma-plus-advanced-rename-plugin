@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "change-case": "^3.0.2",
-    "lodash": "^4.17.10",
+    "lodash.isempty": "^4.4.0",
     "titlecase": "^1.1.2",
     "vex-js": "^4.1.0"
   },
