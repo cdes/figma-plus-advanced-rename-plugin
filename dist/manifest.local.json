@@ -14,11 +14,10 @@
 		}
 	],
 	"images": [
-		"https://cdes.github.io/figma-batch-rename-plugin/gh-pages/screenshots/animation.gif",
-		"https://cdes.github.io/figma-batch-rename-plugin/gh-pages/screenshots/screenshot1.jpg"
+		"http://localhost:5000/dist/screenshot1.jpg"
 	],
 	"js": [
-		"https://cdes.github.io/figma-batch-rename-plugin/dist/js/batch-rename.js"
+		"http://localhost:5000/dist/batch-rename.js"
 	],
-	"css": ["https://cdes.github.io/figma-batch-rename-plugin/dist/css/batch-rename.css"]
+	"css": ["http://localhost:5000/dist/batch-rename.css"]
 }
