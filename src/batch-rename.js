@@ -2,17 +2,23 @@ import vex from "vex-js";
 import rename from "./rename";
 import { getSelectedLayers, toast, renameLayer } from "./utilities";
 
-const batchRenamePlugin = {
-  name: "Batch Rename",
-  id: "batchRenameButton",
-  state: {
-    isOpen: false,
-  },
-  main() {    
-    
+vex.registerPlugin(require("vex-dialog"));
+vex.defaultOptions.className = "vex-theme-plain";
+
+class BatchRename {
+  constructor() {
+    this.name = 'Batch Rename';
+    this.id = 'batchRenameButton',
+    this.state = {
+      isOpen: false,
+    }
+  }
+
+  renameLayers() {     
     const selectedLayers = getSelectedLayers();    
     
     if (selectedLayers.length > 1) {
+      
       this.state.isOpen = true;
       vex.dialog.open({
         message: "Rename Selected Layers (" + selectedLayers.length + ")",
@@ -58,7 +64,8 @@ const batchRenamePlugin = {
           {...vex.dialog.buttons.YES, text: 'Rename' },
           {...vex.dialog.buttons.NO, text: 'Cancel' }
         ],
-        callback: function (data) {
+        callback: (data) => {
+          console.log("isClosed");
 
           this.state.isOpen = false;
 
@@ -76,7 +83,8 @@ const batchRenamePlugin = {
               startsFrom: 0,
               pageName: layer.pageName,
               inputName: data.layername,
-              selectionCount: selectedLayers.length
+              selectionCount: selectedLayers.length,
+              parentName: layer.parentName,
             });
             
             renameLayer(layer.id, newName);
@@ -94,6 +102,25 @@ const batchRenamePlugin = {
   }
 }
 
+const batchRenamePlugin = new BatchRename();
+
+const usePluginAPI = (figmaPlugin) => {
+	const shortcut = { command: true, shift: true, key: 'R' };
+	figmaPlugin.createContextMenuButton.Canvas(
+		batchRenamePlugin.id,
+		batchRenamePlugin.name,
+		batchRenamePlugin.renameLayers.bind(batchRenamePlugin),
+		shortcut
+	);
+	figmaPlugin.onFileLoaded(() => {
+		figmaPlugin.createKeyboardShortcut(shortcut, () => {
+			if (!batchRenamePlugin.state.isOpen) {
+				batchRenamePlugin.renameLayers()
+			}
+		});
+	});
+}
+
 if (window.figmaPlugin) {
 	usePluginAPI(window.figmaPlugin);
 } else {
@@ -108,22 +135,5 @@ if (window.figmaPlugin) {
 			this._figmaPlugin = val;
 			usePluginAPI(val);
 		}
-	});
-}
-
-function usePluginAPI(figmaPlugin) {
-	const shortcut = { command: true, shift: true, key: 'R' };
-	figmaPlugin.createContextMenuButton.Canvas(
-		batchRenamePlugin.id,
-		batchRenamePlugin.name,
-		batchRenamePlugin.main(),
-		shortcut
-	);
-	figmaPlugin.onFileLoaded(() => {
-		figmaPlugin.createKeyboardShortcut(shortcut, () => {
-			if (!batchRenamePlugin.state.isOpen) {
-				batchRenamePlugin.main()
-			}
-		});
 	});
 }

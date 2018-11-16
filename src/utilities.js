@@ -47,6 +47,7 @@ export const getSelectedLayers = () => {
                   
       //get a copy of its properties
       const sceneGraph = App._state.mirror.sceneGraph.get(id);
+      const currentPageName = pagesList.filter(page => page.nodeId === currentPage)[0].name;
       const parentSceneGraph = App._state.mirror.sceneGraph.get(sceneGraph.parent);
       const currentPageId = App._state.mirror.appModel.currentPage;
       const currentPageName = pagesList[currentPageId];
