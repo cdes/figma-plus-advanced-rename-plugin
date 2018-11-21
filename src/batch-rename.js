@@ -102,48 +102,23 @@ class BatchRename {
 
 const batchRenamePlugin = new BatchRename();
 
-const usePluginAPI = (figmaPlugin) => {
-	const shortcut = { command: true, shift: true, key: 'R' };
-	figmaPlugin.createContextMenuButton.Canvas(
-		batchRenamePlugin.id,
-		batchRenamePlugin.name,
-		batchRenamePlugin.renameLayers.bind(batchRenamePlugin),
-		shortcut
-  );
-  figmaPlugin.createContextMenuButton.Selection(
-		batchRenamePlugin.id,
-		batchRenamePlugin.name,
-		batchRenamePlugin.renameLayers.bind(batchRenamePlugin),
-		shortcut
-  );
-  figmaPlugin.createContextMenuButton.ObjectsPanel(
-		batchRenamePlugin.id,
-		batchRenamePlugin.name,
-		batchRenamePlugin.renameLayers.bind(batchRenamePlugin),
-		shortcut
-	);
-	figmaPlugin.onFileLoaded(() => {
-		figmaPlugin.createKeyboardShortcut(shortcut, () => {
-			if (!batchRenamePlugin.state.isOpen) {
-				batchRenamePlugin.renameLayers()
-			}
-		});
-	});
-}
+let shortcut = { command: true, shift: true, key: 'r' };
 
-if (window.figmaPlugin) {
-	usePluginAPI(window.figmaPlugin);
-} else {
-	Object.defineProperty(window, 'figmaPlugin', {
-		configurable: true,
-		enumerable: true,
-		writeable: true,
-		get: function() {
-			return this._figmaPlugin;
-		},
-		set: function(val) {
-			this._figmaPlugin = val;
-			usePluginAPI(val);
-		}
-	});
-}
+const options = [
+  batchRenamePlugin.name,
+  batchRenamePlugin.renameLayers.bind(batchRenamePlugin),
+  null,
+  shortcut
+];
+
+window.figmaPlugin.onFileLoaded(() => {
+  window.figmaPlugin.createKeyboardShortcut(shortcut, () => {
+    if (!batchRenamePlugin.state.isOpen) {
+      batchRenamePlugin.renameLayers.bind(batchRenamePlugin)
+    }
+  });
+});
+
+window.figmaPlugin.createPluginsMenuItem(...options);
+window.figmaPlugin.createContextMenuItem.Canvas(...options);
+window.figmaPlugin.createContextMenuItem.ObjectsPanel(...options);
