@@ -2,7 +2,7 @@
   "name": "figma-batch-rename-plugin",
   "productName": "Batch Rename",
   "version": "1.0.0",
-  "description": "A better and more powerful batch rename plugin for Figma with a dozen of options",
+  "description": "A better and more powerful batch rename plugin for Figma. Provides tons of options (thanks to Sketch Renamer)",
   "main": "index.js",
   "repository": "https://github.com/cdes/figma-batch-rename-plugin",
   "author": "Ahmed Al Haddad <ahmed.hdd@gmail.com>",

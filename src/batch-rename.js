@@ -111,12 +111,10 @@ const options = [
   shortcut
 ];
 
-window.figmaPlugin.onFileLoaded(() => {
-  window.figmaPlugin.createKeyboardShortcut(shortcut, () => {
-    if (!batchRenamePlugin.state.isOpen) {
-      batchRenamePlugin.renameLayers.bind(batchRenamePlugin)
-    }
-  });
+window.figmaPlugin.createKeyboardShortcut(shortcut, () => {
+  if (!batchRenamePlugin.state.isOpen) {
+    batchRenamePlugin.renameLayers();
+  }
 });
 
 window.figmaPlugin.createPluginsMenuItem(...options);
