@@ -5,10 +5,10 @@ import { getSelectedLayers, toast, renameLayer } from "./utilities";
 vex.registerPlugin(require("vex-dialog"));
 vex.defaultOptions.className = "vex-theme-plain";
 
-class BatchRename {
+class AdvancedRename {
   constructor() {
-    this.name = 'Batch Rename';
-    this.id = 'batchRenameButton',
+    this.name = 'Advanced Rename';
+    this.id = 'advancedRenameButton',
     this.state = {
       isOpen: false,
     }
@@ -100,23 +100,24 @@ class BatchRename {
   }
 }
 
-const batchRenamePlugin = new BatchRename();
+const advancedRenamePlugin = new AdvancedRename();
 
 let shortcut = { command: true, shift: true, key: 'r' };
 
 const options = [
-  batchRenamePlugin.name,
-  batchRenamePlugin.renameLayers.bind(batchRenamePlugin),
+  advancedRenamePlugin.name,
+  advancedRenamePlugin.renameLayers.bind(advancedRenamePlugin),
   null,
   shortcut
 ];
 
 window.figmaPlugin.createKeyboardShortcut(shortcut, () => {
-  if (!batchRenamePlugin.state.isOpen) {
-    batchRenamePlugin.renameLayers();
+  if (!advancedRenamePlugin.state.isOpen) {
+    advancedRenamePlugin.renameLayers();
   }
 });
 
 window.figmaPlugin.createPluginsMenuItem(...options);
 window.figmaPlugin.createContextMenuItem.Canvas(...options);
 window.figmaPlugin.createContextMenuItem.ObjectsPanel(...options);
+window.figmaPlugin.createContextMenuItem.Selection(...options);

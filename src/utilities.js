@@ -1,12 +1,5 @@
 import isEmpty from "lodash.isempty";
 
-export const doubleClickEvent = new MouseEvent("dblclick", {
-  view: window,
-  button: 0,
-  bubbles: true,
-  cancelable: true
-});
-
 export const sortLayerByListPosition = (a,b) => {
   if (a.position < b.position)
       return -1;

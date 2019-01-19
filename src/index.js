@@ -1,3 +1,3 @@
-import batchRename from './batch-rename';
+import advancedRename from './advanced-rename';
 
-export default batchRename;
+export default advancedRename;
