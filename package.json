@@ -1,26 +1,67 @@
 {
   "name": "figma-advanced-rename-plugin",
   "productName": "Advanced Rename",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "A better and more powerful batch rename plugin for Figma. Provides tons of options (thanks to Sketch Renamer)",
-  "main": "index.js",
   "repository": "https://github.com/cdes/figma-advanced-rename-plugin",
-  "author": "Ahmed Al Haddad <ahmed.hdd@gmail.com>",
+  "manifestUrl": "https://cdes@github.io/figma-advanced-rename-plugin/manifest.json",
+  "author": "Ahmad Al Haddad <haddad@ah.sa>",
   "license": "MIT",
-  "scripts": {
-    "start": "parcel watch ./src/index.js --out-dir ./dist --out-file advanced-rename.js",
-    "build": "parcel build ./src/index.js --out-dir ./dist --out-file advanced-rename.js"
-  },
+  "main": "src/index.js",
   "dependencies": {
-    "change-case": "^3.0.2",
-    "lodash.isempty": "^4.4.0",
-    "titlecase": "^1.1.2",
-    "vex-js": "^4.1.0"
+    "@babel/runtime": "^7.3.1",
+    "change-case": "^3.1.0",
+    "title-case": "^2.1.1",
+    "vhtml": "^2.1.0"
   },
   "devDependencies": {
-    "babel-plugin-transform-class-properties": "^6.24.1",
-    "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "babel-preset-env": "^1.7.0",
-    "parcel-bundler": "^1.9.7"
-  }
+    "@babel/core": "^7.2.2",
+    "@babel/plugin-proposal-class-properties": "^7.3.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.3.1",
+    "@babel/plugin-transform-arrow-functions": "^7.2.0",
+    "@babel/plugin-transform-classes": "^7.2.2",
+    "@babel/plugin-transform-modules-commonjs": "^7.2.0",
+    "@babel/plugin-transform-react-jsx": "^7.3.0",
+    "@babel/plugin-transform-regenerator": "^7.0.0",
+    "@babel/plugin-transform-runtime": "^7.2.0",
+    "@babel/plugin-transform-shorthand-properties": "^7.2.0",
+    "@babel/plugin-transform-spread": "^7.2.2",
+    "@babel/plugin-transform-template-literals": "^7.2.0",
+    "@babel/preset-env": "^7.3.1",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^23.6.0",
+    "boxen": "^2.1.0",
+    "chalk": "^2.4.2",
+    "jest": "^23.6.0",
+    "nodejs-fs-utils": "^1.1.2",
+    "prettier": "^1.16.1",
+    "regenerator-runtime": "^0.13.1",
+    "rollup": "^1.1.2",
+    "rollup-plugin-babel": "^4.3.2",
+    "rollup-plugin-clean": "^1.0.0",
+    "rollup-plugin-commonjs": "^9.2.0",
+    "rollup-plugin-json": "^3.1.0",
+    "rollup-plugin-node-resolve": "^4.0.0",
+    "rollup-plugin-run": "^1.1.0",
+    "rollup-plugin-sass": "^1.1.0",
+    "rollup-plugin-serve": "^1.0.0",
+    "rollup-plugin-uglify": "^6.0.1",
+    "sha.js": "^2.4.11"
+  },
+  "scripts": {
+    "build": "rollup -c",
+    "prebuild": "prettier --write src/**",
+    "serve": "rollup -cwm",
+    "start": "rollup -cwm  --environment RUN",
+    "test": "jest --config jest.config.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "browserslist": [
+    "chrome >= 49",
+    "firefox >= 45",
+    "safari >=10.1",
+    "edge >= 14"
+  ]
 }

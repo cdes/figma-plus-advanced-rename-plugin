@@ -1,0 +1,72 @@
+.figma-plugin-panel {
+  position: fixed;
+  font: normal normal 400 14px/20px Roboto, sans-serif;
+  border-radius: 3px;
+  box-shadow: 0 0 0.5px 0.5px rgba(0, 0, 0, 0.2), 0 2px 14px rgba(0, 0, 0, 0.15);
+  border-radius: 3px;
+  display: flex;
+  flex-direction: column;
+  background: #f8f8f8;
+  color: #444;
+}
+.figma-plugin-panel * {
+  -webkit-font-smoothing: antialiased;
+}
+.figma-plugin-panel header {
+  min-height: 36px;
+  background: #2c2c2c;
+  cursor: default;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 12px;
+  user-select: none;
+  border-radius: 3px 3px 0 0;
+  margin: 0 -1px;
+}
+.figma-plugin-panel header > span,
+.figma-plugin-panel header > nav button {
+  font: normal normal 400 14px/20px Roboto, sans-serif;
+  color: #fff;
+  letter-spacing: 0.2px;
+}
+.figma-plugin-panel header > button {
+  background: none;
+  border: none;
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: default;
+  fill: #fff;
+  color: #fff;
+  opacity: 0.3;
+  width: 36px;
+  height: 36px;
+}
+.figma-plugin-panel header > button:hover {
+  opacity: 1;
+}
+.figma-plugin-panel header nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 48px;
+}
+.figma-plugin-panel header nav + button {
+  width: 48px;
+  height: 48px;
+}
+.figma-plugin-panel header nav > button {
+  background: none;
+  border: none;
+  outline: none;
+  opacity: 0.5;
+  padding: 0 12px;
+}
+.figma-plugin-panel header nav > button:hover {
+  opacity: 0.7;
+}
+.figma-plugin-panel header nav > button.active {
+  opacity: 1;
+}

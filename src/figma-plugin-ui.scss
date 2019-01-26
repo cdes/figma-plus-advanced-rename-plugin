@@ -1,0 +1,258 @@
+.figma-plugin-ui {
+  display: flex;
+  flex-direction: column;
+
+  .scrollable {
+    padding: 12px;
+    flex-basis: calc(100% - 66px);
+    overflow-y: hidden;
+  }
+
+  .empty {
+    background-color: #fff;
+    text-align: center;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+
+    h2 {
+      font-size: 14px;
+      font-weight: 400;
+      margin: 0;
+      padding: 0;
+    }
+
+    p {
+      font-size: 11px;
+      line-height: 15px;
+      margin-top: 18px;
+      color: #aaa;
+    }
+  }
+
+  &:last-child {
+    border-radius: 0 0 3px 3px;
+  }
+
+  .field-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+
+    button {
+      font-size: 11px;
+      margin: 0 8px 8px 0;
+      max-width: none;
+      height: 24px;
+      line-height: 24px;
+
+      .svg {
+        display: inline;
+      }
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+
+    label {
+      flex-basis: 35%;
+    }
+
+    input {
+      flex-basis: 65%;
+    }
+
+    label,
+    input {
+      margin-bottom: 0;
+    }
+
+    #starts-from {
+      font-size: 9px;
+      height: 20px;
+      line-height: 20px;
+      margin-left: 8px;
+      flex-basis: 64px;
+      border: none;
+
+      -moz-appearance: textfield;
+
+      &::-webkit-outer-spin-button,
+      &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+      }
+    }
+
+    h2 {
+      margin: 0;
+    }
+  }
+
+  h2 {
+    font-size: 12px;
+    line-height: 24px;
+    color: #999;
+    margin: 0 0 8px;
+    padding: 0;
+  }
+
+  p {
+    font-size: 11px;
+    line-height: 15px;
+    margin-bottom: 16px;
+    color: #aaa;
+  }
+
+  input + p,
+  select + p,
+  .select + p {
+    margin-top: -8px;
+  }
+
+  input {
+    background-color: #fff;
+    color: #444;
+    border: 1px solid #d4d4d4;
+    padding: 0 6px;
+    height: 30px;
+    line-height: 30px;
+    box-sizing: border-box;
+    border-radius: 3px;
+    font-size: 11px;
+    display: block;
+    width: 100%;
+
+    &:focus {
+      border: 2px solid #30c2ff;
+      padding: 0 5px;
+    }
+
+    &:disabled {
+      border: none;
+      background-color: transparent;
+      font-size: 11px;
+      line-height: 15px;
+      height: 15px;
+      color: #999;
+    }
+
+    margin-bottom: 8px;
+  }
+
+  label {
+    font: normal normal 400 14px/20px Roboto, sans-serif;
+    font-size: 14px;
+    line-height: 12px;
+    color: #2c2c2c;
+    display: block;
+    width: 100%;
+    margin-bottom: 8px;
+  }
+
+  select {
+    background-color: #fff;
+    color: #444;
+    border: 1px solid #d4d4d4;
+    padding: 0 6px;
+    height: 30px;
+    box-sizing: border-box;
+    border-radius: 3px;
+    font-size: 11px;
+    display: block;
+    width: 100%;
+    margin-bottom: 16px;
+  }
+
+  .select {
+    position: relative;
+
+    select {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      text-indent: 1px;
+      text-overflow: "";
+    }
+
+    &:before {
+      content: "\12b";
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 30px;
+      height: 30px;
+      top: 0;
+      right: 0;
+      color: #000;
+      position: absolute;
+      font: 4px f7ce4bef2;
+      pointer-events: none;
+    }
+  }
+
+  button {
+    display: block;
+    text-align: center;
+    flex-shrink: 0;
+    height: 30px;
+    line-height: 28px;
+    max-width: 180px;
+    padding: 0 11px;
+    color: #444;
+    font-weight: 400;
+    background-color: transparent;
+    box-sizing: border-box;
+    border: 1px solid #d4d4d4;
+    border-radius: 3px;
+    outline: none;
+
+    &:disabled {
+      opacity: 0.5;
+    }
+
+    &:focus {
+      border: 2px solid #30c2ff;
+      line-height: 26px;
+      padding: 0 10px;
+    }
+
+    &:active {
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+
+    & + button {
+      margin-left: 12px;
+    }
+
+    &.primary {
+      color: #fff;
+      background-color: #30c2ff;
+      border-color: #30c2ff;
+
+      &:active {
+        background-color: #30afe6;
+      }
+
+      &:focus {
+        border: 2px solid rgba(0, 0, 0, 0.2);
+      }
+    }
+  }
+
+  footer {
+    margin: -12px;
+    border-radius: 0 0 3px 3px;
+    flex-basis: 66px;
+    flex-grow: 0;
+    flex-shrink: 0;
+    border-top: 1px solid #d4d4d4;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0 12px;
+  }
+}
