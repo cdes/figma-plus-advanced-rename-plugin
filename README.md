@@ -1,11 +1,11 @@
 <h1 align="center">Figma Advanced Rename Plugin</h1>
 
-<p align="center">A better and more powerful batch rename plugin for Figma. Provides tons of options (thanks to Sketch Renamer)</p>
+<p align="center">A better and more powerful batch rename plugin for Figma. Provides a dozen of options (thanks to Sketch Renamer)</p>
 
 <hr/>
 
 <p align="center">
-<img src="https://user-images.githubusercontent.com/1207863/48641002-7981c680-e9e9-11e8-9fc3-b9edafbdf2da.png" height="600" />
+<img src="https://cdes.github.io/figma-advanced-rename-plugin/assets/preview.png" height="600" />
 </p>
 
 # How to install
