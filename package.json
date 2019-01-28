@@ -50,6 +50,7 @@
   },
   "scripts": {
     "build": "rollup -c",
+    "serve:prod": "rollup -c  --environment SERVE",
     "prebuild": "prettier --write src/**",
     "serve": "rollup -cwm",
     "start": "rollup -cwm  --environment RUN",

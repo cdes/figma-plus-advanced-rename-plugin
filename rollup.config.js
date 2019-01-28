@@ -16,6 +16,7 @@ import chalk from 'chalk';
 const production = !process.env.ROLLUP_WATCH;
 const development = process.env.ROLLUP_WATCH;
 const RUN = process.env.RUN;
+const SERVE = process.env.SERVE;
 
 // Default options
 const devServerOptions = {
@@ -150,7 +151,7 @@ export default [
       babel({runtimeHelpers: true,}),
       cjs(),
 			development && RUN && run(), // Dev mode: run the bundle to see output in console/terminal
-			development && serve(devServerOptions), // Dev Serve mode: serve  bundle
+			(development || serve) && serve(devServerOptions), // Dev Serve mode: serve  bundle
 			production && uglify(), // Production: uglify bundle,
 			sass({
 				output: `./dist/${pkg.name}.css`,
