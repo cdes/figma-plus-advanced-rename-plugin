@@ -27,11 +27,11 @@ class AdvancedRenamePlugin {
 
     const options = [this.pluginName, this.showUI, null, shortcut];
 
-    window.figmaPlugin.createKeyboardShortcut(shortcut, this.showUI);
-    window.figmaPlugin.createPluginsMenuItem(...options);
-    window.figmaPlugin.createContextMenuItem.Canvas(...options);
-    window.figmaPlugin.createContextMenuItem.ObjectsPanel(...options);
-    window.figmaPlugin.createContextMenuItem.Selection(...options);
+    window.figmaPlus.createKeyboardShortcut(shortcut, this.showUI);
+    window.figmaPlus.createPluginsMenuItem(...options);
+    window.figmaPlus.createContextMenuItem.Canvas(...options);
+    window.figmaPlus.createContextMenuItem.ObjectsPanel(...options);
+    window.figmaPlus.createContextMenuItem.Selection(...options);
 
     this.UI = (
       <div class="figma-plugin-ui">
@@ -153,12 +153,12 @@ class AdvancedRenamePlugin {
   };
 
   showUI = () => {
-    if (window.figmaPlugin.scene.selection.length < 2) {
-      window.figmaPlugin.showToast(`⚠️  Select at least 2 layers.`, 5);
+    if (window.figmaPlus.scene.selection.length < 2) {
+      window.figmaPlus.showToast(`⚠️  Select at least 2 layers.`, 5);
       return;
     }
 
-    window.figmaPlugin.showUI(
+    window.figmaPlus.showUI(
       this.pluginName,
       modalElement => {
         const htmlNodes = createHtmlNodes(this.UI);
@@ -166,8 +166,8 @@ class AdvancedRenamePlugin {
 
         this.attachEvents();
 
-        this.currentPage = window.figmaPlugin.scene.currentPage.name;
-        this.selection = window.figmaPlugin.scene.selection.reverse();
+        this.currentPage = window.figmaPlus.scene.currentPage.name;
+        this.selection = window.figmaPlus.scene.selection.reverse();
       },
       406,
       "auto",
@@ -235,13 +235,13 @@ class AdvancedRenamePlugin {
       layer.name = newName;
     });
 
-    window.figmaPlugin.hideUI(this.pluginName);
+    window.figmaPlus.hideUI(this.pluginName);
 
-    window.figmaPlugin.showToast(`Renamed ${this.selection.length} layers.`, 5);
+    window.figmaPlus.showToast(`Renamed ${this.selection.length} layers.`, 5);
   };
 
   onCancel = () => {
-    window.figmaPlugin.hideUI(this.pluginName);
+    window.figmaPlus.hideUI(this.pluginName);
   };
 }
 

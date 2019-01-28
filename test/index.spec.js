@@ -1,6 +1,6 @@
 import ExamplePlugin from '../src';
 
-window.figmaPlugin = {
+window.figmaPlus = {
   createPluginsMenuItem: () => {},
 }
 
