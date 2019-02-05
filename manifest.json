@@ -7,24 +7,12 @@
 	"github": "https://github.com/cdes/figma-advanced-rename-plugin",
   "description": "A better and more powerful batch rename plugin for Figma. Provides a dozen of options (thanks to Sketch Renamer)",
 	"instructions": "Select 2 or more layers, right click and select 'Advanced Rename', or press CTRL/CMD + SHIFT + R.",
-	"updates": [
-		{
-			"version": "2.0.0",
-			"date": "1/19/2019",
-			"notes": "Rewrite plugin to utlize figmaPlugin API. Redesigned the UI, added preview feature."
-		},
-		{
-			"version": "1.0.0",
-			"date": "1/19/2019",
-			"notes": "Initial release"
-		}
-	],
 	"images": [
-		"https://cdes.github.io/figma-advanced-rename-plugin/assets/animation.gif",
-		"https://cdes.github.io/figma-advanced-rename-plugin/assets/screenshot1.jpg"
+		"assets/animation.gif",
+		"assets/screenshot1.jpg"
 	],
 	"js": [
-		"https://cdes.github.io/figma-advanced-rename-plugin/dist/figma-advanced-rename-plugin.js"
+		"dist/figma-advanced-rename-plugin.js"
 	],
-	"css": ["https://cdes.github.io/figma-advanced-rename-plugin/dist/figma-advanced-rename-plugin.css"]
+	"css": ["dist/figma-advanced-rename-plugin.css"]
 }
