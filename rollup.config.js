@@ -121,7 +121,7 @@ const distCleaner = () => {
 export default [
 	// Simulated Panel & Figma API for local development purpose only (Away from Figma)
 	{
-		input: 'lib/figma-plugin-panel.js',
+		input: 'figma-plus/figma-plugin-panel.js',
 		output: {
 			name: 'figma-plugin-panel',
 			file: 'public/figma-plugin-panel.js',

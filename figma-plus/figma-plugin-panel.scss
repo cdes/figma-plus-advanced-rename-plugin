@@ -1,0 +1,85 @@
+.figma-plugin-panel {
+  * {
+    -webkit-font-smoothing: antialiased;
+  }
+
+  position: fixed;
+
+  font: normal normal 400 14px/20px Roboto,sans-serif;
+  border-radius: 3px;
+  box-shadow: 0 0 0.5px 0.5px rgba(0,0,0,.2), 0 2px 14px rgba(0,0,0,.15);
+  border-radius: 3px;
+  display: flex;
+  flex-direction: column;
+  background: #f8f8f8;
+  color: #444;
+
+  header {
+    min-height: 36px;
+    background: #2c2c2c;
+    cursor: default;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 12px;
+    user-select: none;
+    border-radius: 3px 3px 0 0;
+    margin: 0 -1px;
+
+    > span,
+    > nav button {
+      font: normal normal 400 14px/20px Roboto,sans-serif;
+      color: #fff;
+      letter-spacing: .2px;
+    }
+
+    > button {
+      background: none;
+      border: none;
+      outline: none;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      
+      cursor: default;
+      fill: #fff;
+      color: #fff;
+      opacity: .3;
+      width: 36px;
+      height: 36px;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 48px;
+    }
+
+    nav + button {
+      width: 48px;
+      height: 48px;
+    }
+
+    nav > button {
+      background: none;
+      border: none;
+      outline: none;
+      opacity: .5;
+      padding: 0 12px;
+
+      &:hover {
+        opacity: .7;
+      }
+
+      &.active {
+        opacity: 1;
+      }
+    }
+  }
+}
