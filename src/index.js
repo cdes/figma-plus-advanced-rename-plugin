@@ -30,7 +30,6 @@ class AdvancedRenamePlugin {
     window.figmaPlus.createKeyboardShortcut(shortcut, this.showUI);
     window.figmaPlus.createPluginsMenuItem(...options);
     window.figmaPlus.createContextMenuItem.Canvas(...options);
-    window.figmaPlus.createContextMenuItem.ObjectsPanel(...options);
     window.figmaPlus.createContextMenuItem.Selection(...options);
 
     this.UI = (
@@ -154,7 +153,7 @@ class AdvancedRenamePlugin {
 
   showUI = () => {
     if (window.figmaPlus.scene.selection.length < 2) {
-      window.figmaPlus.showToast(`⚠️  Select at least 2 layers.`, 5);
+      window.figmaPlus.showToast(`⚠️&nbsp;&nbsp;Select at least 2 layers.`, 5);
       return;
     }
 
@@ -237,7 +236,10 @@ class AdvancedRenamePlugin {
 
     window.figmaPlus.hideUI(this.pluginName);
 
-    window.figmaPlus.showToast(`Renamed ${this.selection.length} layers.`, 5);
+    window.figmaPlus.showToast(
+      `🎉&nbsp;&nbsp;Renamed ${this.selection.length} layers.`,
+      5
+    );
   };
 
   onCancel = () => {
