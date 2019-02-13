@@ -5,7 +5,7 @@
 <hr/>
 
 <p align="center">
-<img src="https://cdes.github.io/figma-advanced-rename-plugin/assets/preview.png" height="600" />
+<img src="https://user-images.githubusercontent.com/1207863/52700168-7a92a780-2f88-11e9-84d8-eee6fa3e1f68.png" height="600" />
 </p>
 
 # How to install
