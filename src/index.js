@@ -1,7 +1,7 @@
 /** @jsx h */
 import "./figma-plugin-ui.scss";
 import h from "vhtml";
-import { getDomNode, createHtmlNodes, insertAtCaret } from "./utils";
+import { getDomNode, insertAtCaret } from "./utils";
 import rename from "./rename";
 
 class AdvancedRenamePlugin {
@@ -25,12 +25,14 @@ class AdvancedRenamePlugin {
       }
     };
 
-    const options = [this.pluginName, this.showUI, null, shortcut];
+    const options = {
+      label: this.pluginName,
+      action: this.showUI,
+      showInSelectionMenu: true,
+      shortcut
+    };
 
-    window.figmaPlus.createKeyboardShortcut(shortcut, this.showUI);
-    window.figmaPlus.createPluginsMenuItem(...options);
-    window.figmaPlus.createContextMenuItem.Canvas(...options);
-    window.figmaPlus.createContextMenuItem.Selection(...options);
+    window.figmaPlus.addCommand(options);
 
     this.UI = (
       <div class="figma-plugin-ui">
@@ -152,28 +154,23 @@ class AdvancedRenamePlugin {
   };
 
   showUI = () => {
-    if (window.figmaPlus.scene.selection.length < 2) {
+    if (window.figmaPlus.currentPage.selection.length < 2) {
       window.figmaPlus.showToast(`⚠️&nbsp;&nbsp;Select at least 2 layers.`, 5);
       return;
     }
 
-    window.figmaPlus.showUI(
-      this.pluginName,
-      modalElement => {
-        const htmlNodes = createHtmlNodes(this.UI);
-        modalElement.parentNode.replaceChild(htmlNodes, modalElement);
-
+    window.figmaPlus.showUI({
+      title: this.pluginName,
+      html: this.UI,
+      script: () => {
         this.attachEvents();
-
-        this.currentPage = window.figmaPlus.scene.currentPage.name;
-        this.selection = window.figmaPlus.scene.selection.reverse();
+        this.currentPage = window.figmaPlus.currentPage.name;
+        this.selection = window.figmaPlus.currentPage.selection.reverse();
       },
-      406,
-      "auto",
-      0.5,
-      0.5,
-      false
-    );
+      width: 406,
+      height: "auto",
+      overlay: true
+    });
   };
 
   onInput = event => {
