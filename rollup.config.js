@@ -13,8 +13,8 @@ import shajs from 'sha.js';
 import boxen from 'boxen';
 import chalk from 'chalk';
 
-const production = !process.env.ROLLUP_WATCH;
-const development = process.env.ROLLUP_WATCH;
+const PRODUCTION = !process.env.ROLLUP_WATCH;
+const DEVELOPMENT = process.env.ROLLUP_WATCH;
 const RUN = process.env.RUN;
 const SERVE = process.env.SERVE;
 
@@ -23,7 +23,7 @@ const devServerOptions = {
   verbose: false,
   host: 'localhost',
 	port: 8080,
-	contentBase: ['dist', 'public'],
+	contentBase: ['dist'],
   headers: {
 		'Access-Control-Allow-Origin': '*',
 		'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept, Range',
@@ -58,7 +58,7 @@ const logger = () => {
 				}
 			}
 
-			if (development) {
+			if (DEVELOPMENT) {
 				const devContent = [
 					chalk.green.bold('FOR PLUGIN MANAGER:'),
 					chalk.white.bold('- dev server port:  ')+chalk.white(devServerOptions.port),
@@ -68,7 +68,7 @@ const logger = () => {
 				console.log(boxen(devContent.join("\n"), boxOptions));
 			}
 
-			if (production) {
+			if (PRODUCTION) {
 				const file = require('child_process').execSync(`cat ./${pkg.files}/*`).toString('UTF-8');
 				const hash = shajs('sha256').update(file).digest('hex');
 				const date = new Date();
@@ -119,24 +119,6 @@ const distCleaner = () => {
 }
 
 export default [
-	// Simulated Panel & Figma API for local development purpose only (Away from Figma)
-	{
-		input: 'figma-plus/figma-plugin-panel.js',
-		output: {
-			name: 'figma-plugin-panel',
-			file: 'public/figma-plugin-panel.js',
-			format: 'umd'
-		},
-		plugins: [
-			resolve(),
-      babel({runtimeHelpers: true}),
-      cjs(),
-			uglify(),
-			sass({
-				output: `./public/figma-plugin-panel.css`,
-			}),
-		],
-	},
 	// browser-friendly UMD build
 	{
 		input: 'src/index.js',
@@ -150,9 +132,9 @@ export default [
 			resolve(),
       babel({runtimeHelpers: true,}),
       cjs(),
-			development && RUN && run(), // Dev mode: run the bundle to see output in console/terminal
-			(development || serve) && serve(devServerOptions), // Dev Serve mode: serve  bundle
-			production && uglify(), // Production: uglify bundle,
+			DEVELOPMENT && RUN && run(), // Dev mode: run the bundle to see output in console/terminal
+			(DEVELOPMENT || SERVE) && serve(devServerOptions), // Dev Serve mode: serve  bundle
+			PRODUCTION && uglify(), // Production: uglify bundle,
 			sass({
 				output: `./dist/${pkg.name}.css`,
 			}),

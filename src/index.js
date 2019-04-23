@@ -1,7 +1,7 @@
 /** @jsx h */
 import "./figma-plugin-ui.scss";
 import h from "vhtml";
-import { getDomNode, insertAtCaret } from "./utils";
+import { insertAtCaret } from "./utils";
 import rename from "./rename";
 
 class AdvancedRenamePlugin {
@@ -121,13 +121,14 @@ class AdvancedRenamePlugin {
     );
   }
 
-  attachEvents = () => {
-    this.patternInput = getDomNode("#pattern");
+  attachEvents = element => {
+    const node = selector => element.querySelector(selector);
+    this.patternInput = node("#pattern");
     this.patternInput.addEventListener("input", this.onInput);
     this.patternInput.focus();
 
-    this.preview = getDomNode("#preview");
-    this.startsFrom = getDomNode("#starts-from");
+    this.preview = node("#preview");
+    this.startsFrom = node("#starts-from");
 
     [
       "#number-asc",
@@ -145,25 +146,28 @@ class AdvancedRenamePlugin {
       "#page-name",
       "#layer-width",
       "#layer-height"
-    ].map(id => getDomNode(id).addEventListener("click", this.onKeywordClick));
+    ].map(id => node(id).addEventListener("click", this.onKeywordClick));
 
-    getDomNode("#button-secondary").addEventListener("click", this.onCancel);
+    node("#button-secondary").addEventListener("click", this.onCancel);
 
-    this.confirmButton = getDomNode("#button-primary");
+    this.confirmButton = node("#button-primary");
     this.confirmButton.addEventListener("click", this.onConfirm);
   };
 
   showUI = () => {
     if (window.figmaPlus.currentPage.selection.length < 2) {
-      window.figmaPlus.showToast(`⚠️&nbsp;&nbsp;Select at least 2 layers.`, 5);
+      window.figmaPlus.showToast({
+        message: `⚠️  Select at least 2 layers.`,
+        timeoutInSeconds: 5
+      });
       return;
     }
 
     window.figmaPlus.showUI({
       title: this.pluginName,
       html: this.UI,
-      script: () => {
-        this.attachEvents();
+      onMount: element => {
+        this.attachEvents(element);
         this.currentPage = window.figmaPlus.currentPage.name;
         this.selection = window.figmaPlus.currentPage.selection.reverse();
       },
@@ -233,10 +237,10 @@ class AdvancedRenamePlugin {
 
     window.figmaPlus.hideUI(this.pluginName);
 
-    window.figmaPlus.showToast(
-      `🎉&nbsp;&nbsp;Renamed ${this.selection.length} layers.`,
-      5
-    );
+    window.figmaPlus.showToast({
+      message: `🎉&nbsp;&nbsp;Renamed ${this.selection.length} layers.`,
+      timeoutInSeconds: 5
+    });
   };
 
   onCancel = () => {

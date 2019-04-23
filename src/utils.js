@@ -7,10 +7,6 @@ export const until = conditionFunction => {
   return new Promise(poll);
 };
 
-export const getDomNode = selector => {
-  return document.querySelector(selector);
-};
-
 export const createHtmlNodes = string =>
   document.createRange().createContextualFragment(string);
 
