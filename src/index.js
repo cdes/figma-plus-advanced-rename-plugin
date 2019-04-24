@@ -173,7 +173,8 @@ class AdvancedRenamePlugin {
       },
       width: 406,
       height: "auto",
-      overlay: true
+      overlay: true,
+      useFigmaStyles: false
     });
   };
 

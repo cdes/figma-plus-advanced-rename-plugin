@@ -6,7 +6,7 @@
 .figma-plugin-ui .scrollable {
   padding: 12px;
   flex-basis: calc(100% - 66px);
-  overflow-y: hidden;
+  overflow: hidden;
 }
 .figma-plugin-ui .empty {
   background-color: #fff;
@@ -166,8 +166,9 @@
   pointer-events: none;
 }
 .figma-plugin-ui button {
-  display: block;
-  text-align: center;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
   flex-shrink: 0;
   height: 30px;
   line-height: 28px;
@@ -180,6 +181,9 @@
   border: 1px solid #d4d4d4;
   border-radius: 3px;
   outline: none;
+}
+.figma-plugin-ui button span {
+  margin-left: 4px;
 }
 .figma-plugin-ui button:disabled {
   opacity: 0.5;
@@ -207,7 +211,6 @@
   border: 2px solid rgba(0, 0, 0, 0.2);
 }
 .figma-plugin-ui footer {
-  margin: -12px;
   border-radius: 0 0 3px 3px;
   flex-basis: 66px;
   flex-grow: 0;

@@ -5,7 +5,7 @@
   .scrollable {
     padding: 12px;
     flex-basis: calc(100% - 66px);
-    overflow-y: hidden;
+    overflow: hidden;
   }
 
   .empty {
@@ -194,8 +194,9 @@
   }
 
   button {
-    display: block;
-    text-align: center;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
     flex-shrink: 0;
     height: 30px;
     line-height: 28px;
@@ -208,6 +209,10 @@
     border: 1px solid #d4d4d4;
     border-radius: 3px;
     outline: none;
+
+    span {
+      margin-left: 4px;
+    }
 
     &:disabled {
       opacity: 0.5;
@@ -243,7 +248,6 @@
   }
 
   footer {
-    margin: -12px;
     border-radius: 0 0 3px 3px;
     flex-basis: 66px;
     flex-grow: 0;

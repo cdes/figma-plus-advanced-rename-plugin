@@ -1,7 +1,7 @@
 {
   "name": "figma-advanced-rename-plugin",
   "productName": "Advanced Rename",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "description": "A better and more powerful batch rename plugin for Figma. Provides tons of options (thanks to Sketch Renamer)",
   "repository": "https://github.com/cdes/figma-advanced-rename-plugin",
   "manifestUrl": "https://cdes.github.io/figma-advanced-rename-plugin/manifest.json",
@@ -45,8 +45,7 @@
     "rollup-plugin-run": "^1.1.0",
     "rollup-plugin-sass": "^1.2.2",
     "rollup-plugin-serve": "^1.0.1",
-    "rollup-plugin-uglify": "^6.0.2",
-    "sha.js": "^2.4.11"
+    "rollup-plugin-uglify": "^6.0.2"
   },
   "scripts": {
     "build": "rollup -c",

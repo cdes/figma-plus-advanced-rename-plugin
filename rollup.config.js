@@ -9,7 +9,6 @@ import sass from 'rollup-plugin-sass';
 import pkg from './package.json'
 import fs from 'fs';
 import { fsizeSync, rmdirsSync } from 'nodejs-fs-utils';
-import shajs from 'sha.js';
 import boxen from 'boxen';
 import chalk from 'chalk';
 
@@ -41,27 +40,28 @@ const boxOptions = {
 const logger = () => {
 	return {
 		writeBundle(bundle) {
+			
 			const bundleSize = parseFloat(Math.round(fsizeSync(pkg.files[0])) / 1024).toFixed(2);			
 			const filesPaths = [];
 			const extensionRegex = /\.[0-9a-z]+$/i;
 				
 			const items = fs.readdirSync(pkg.files[0]);
-			
-			for (let i = 0; i < items.length; i++) {
+
+			for (var i=0; i<items.length; i++) {
 				const extension = items[i].match(extensionRegex)[0];		
 
 				if (extension === '.js') {
-					filesPaths.push(chalk.white.bold('- js:               ')+chalk.white(`${pkg.files[0]}/${items[i]}`));
+					filesPaths.push(chalk.white.bold('js:     ')+chalk.white(`${items[i]}`));
 				}
 				else if (extension === '.css') {
-					filesPaths.push(chalk.white.bold('- css:              ')+chalk.white(`${pkg.files[0]}/${items[i]}`));
+					filesPaths.push(chalk.white.bold('css:    ')+chalk.white(`${items[i]}`));
 				}
-			}
+			}			
 
 			if (DEVELOPMENT) {
 				const devContent = [
 					chalk.green.bold('FOR PLUGIN MANAGER:'),
-					chalk.white.bold('- dev server port:  ')+chalk.white(devServerOptions.port),
+					chalk.white.bold('port:   ')+chalk.white(devServerOptions.port),
 					...filesPaths,
 				];
 
@@ -69,41 +69,14 @@ const logger = () => {
 			}
 
 			if (PRODUCTION) {
-				const file = require('child_process').execSync(`cat ./${pkg.files}/*`).toString('UTF-8');
-				const hash = shajs('sha256').update(file).digest('hex');
-				const date = new Date();
-				const publishDate = `${date.getMonth()+1}/${date.getDate()}/${date.getFullYear()}`;
-
-				const bundleContent = [
-					chalk.green.bold('BUNDLE INFO'),
-					...filesPaths,
-					chalk.white.bold('- size:              ') + chalk.white(`${bundleSize}KB`),
-					chalk.gray.bold('- ⓘ') + chalk.gray('  Try to keep it under 100KB.'),
-				];
-
-
 				const productionContent = [
 					chalk.green.bold('PUBLISHING INFO'),
-					chalk.white.bold('- id:               ') + chalk.white(pkg.name),
-					chalk.white.bold('- publishDate:      ') + chalk.white(publishDate),
-					chalk.white.bold('- hash:             ') + chalk.white(hash),
-					chalk.white.bold('- manifest:         ') + chalk.white(pkg.manifestUrl),
-				]
-
-				const productionContent2 = [	
-					chalk.green.bold('PUBLISHING INSTRUCTIONS'),
-					chalk.red('- Make sure that your plugin actually works before proceeding ;)'),
-					chalk.white.bold('- 1. ') + chalk.white('Create a new branch in your repo named ') + chalk.white.underline('gh-pages'),
-					chalk.white.bold('- 2. ') + chalk.white('Go to your repo settings and verify that GitHub Pages is working'),
-					chalk.white.bold('- 3. ') + chalk.white('Double check that your manifest & plugin files are publicly accessible from your github-pages url.'),
-					chalk.white.bold('- 4. ') + chalk.white('Visit ➜  https://github.com/jachui/figma-plugin-manager/edit/gh-pages/masterList.json'),
-					chalk.white.bold('- 5. ') + chalk.white('Use the info above to include your plugin'),
-					chalk.white.bold('- 6. ') + chalk.white('Submit a PR'),
+					...filesPaths,
+					chalk.white.bold('size:   ') + chalk.white(`${bundleSize}KB`) + chalk.gray(' (Keep it under 100KB)'),
+					chalk.white.bold('guide:  ') + chalk.white('https://docs.figmaplus.com/#/developerGuide/publish'),
 				];
 
-				console.log(boxen(bundleContent.join("\n"), boxOptions));
 				console.log(boxen(productionContent.join("\n"), boxOptions));
-				console.log(boxen(productionContent2.join("\n"), boxOptions));
 			}
 
 		}
