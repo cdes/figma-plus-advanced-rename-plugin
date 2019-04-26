@@ -1,7 +1,7 @@
 {
   "name": "figma-advanced-rename-plugin",
   "productName": "Advanced Rename",
-  "version": "2.0.4",
+  "version": "2.0.5",
   "description": "A better and more powerful batch rename plugin for Figma. Provides tons of options (thanks to Sketch Renamer)",
   "repository": "https://github.com/cdes/figma-advanced-rename-plugin",
   "manifestUrl": "https://cdes.github.io/figma-advanced-rename-plugin/manifest.json",

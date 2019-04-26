@@ -2,11 +2,11 @@
 {
 	"name": "Advanced Rename",
 	"id": "figma-advanced-rename-plugin",
-	"version": "2.0.4",
+	"version": "2.0.5",
 	"author": "Ahmad Al Haddad",
 	"github": "https://github.com/cdes/figma-advanced-rename-plugin",
   "description": "A better and more powerful batch rename plugin for Figma. Provides a dozen of options (thanks to Sketch Renamer)",
-	"instructions": "Select 2 or more layers, right click and select 'Advanced Rename', or press CTRL/CMD + SHIFT + R.",
+	"instructions": "Select 2 or more layers, right click and select 'Advanced Rename', or press ALT/OPTION + SHIFT + R.",
 	"images": [
 		"assets/preview.gif",
 		"assets/preview.jpg"

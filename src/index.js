@@ -14,12 +14,12 @@ class AdvancedRenamePlugin {
     // SETUP PLUGIN
     const shortcut = {
       mac: {
-        command: true,
+        option: true,
         shift: true,
         key: "R"
       },
       windows: {
-        control: true,
+        alt: true,
         shift: true,
         key: "R"
       }
