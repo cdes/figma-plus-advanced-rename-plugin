@@ -226,9 +226,25 @@
   background-color: rgba(0, 0, 0, 0.25);
   border-color: #444;
 }
+.has-dark-theme .figma-plugin-ui input:disabled {
+  border: none;
+  background-color: transparent;
+  color: #999;
+}
 .has-dark-theme .figma-plugin-ui button {
   color: #aaa;
   border: 1px solid #444;
+}
+.has-dark-theme .figma-plugin-ui button.primary {
+  color: #fff;
+  background-color: #30c2ff;
+  border-color: #30c2ff;
+}
+.has-dark-theme .figma-plugin-ui button.primary:active {
+  background-color: #30afe6;
+}
+.has-dark-theme .figma-plugin-ui button.primary:focus {
+  border: 2px solid rgba(0, 0, 0, 0.2);
 }
 .has-dark-theme .figma-plugin-ui footer {
   border: 1px solid rgba(255, 255, 255, 0.1);

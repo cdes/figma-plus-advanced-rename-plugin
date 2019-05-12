@@ -264,11 +264,31 @@
     input {
       background-color: rgba(0, 0, 0, 0.25);
       border-color: #444;
+
+      &:disabled {
+        border: none;
+        background-color: transparent;
+        color: #999;
+      }
     }
 
     button {
       color: #aaa;
       border: 1px solid #444;
+
+      &.primary {
+        color: #fff;
+        background-color: #30c2ff;
+        border-color: #30c2ff;
+
+        &:active {
+          background-color: #30afe6;
+        }
+
+        &:focus {
+          border: 2px solid rgba(0, 0, 0, 0.2);
+        }
+      }
     }
 
     footer {
