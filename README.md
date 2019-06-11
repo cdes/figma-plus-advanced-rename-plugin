@@ -1,3 +1,7 @@
+<h3 style="color:red">
+This plugin does not work anymore because <a href="https://spectrum.chat/figma-plus/general/thank-you-and-good-bye~ef95c63c-b8e1-4885-8404-d8bf08fdb1d0">Figma Plus was discontinued</a>.  Once Figma releases their official extensions API, I will migrate this plugin to work there.  Sorry for the inconvenience.
+</h3>
+<hr/>
 <h1 align="center">Figma Advanced Rename Plugin</h1>
 
 <p align="center">A better and more powerful batch rename plugin for Figma. Provides a dozen of options (thanks to Sketch Renamer)</p>
